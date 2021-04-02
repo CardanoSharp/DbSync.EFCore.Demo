@@ -1,11 +1,46 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {}
+    "net5.0": {
+      "Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Application.dll": {}
+        }
+      },
+      "Infastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Infastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infastructure.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Application/1.0.0": {
+      "type": "project",
+      "path": "../Application/Application.csproj",
+      "msbuildProject": "../Application/Application.csproj"
+    },
+    "Infastructure/1.0.0": {
+      "type": "project",
+      "path": "../Infastructure/Infastructure.csproj",
+      "msbuildProject": "../Infastructure/Infastructure.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net5.0": []
+    "net5.0": [
+      "Application >= 1.0.0",
+      "Infastructure >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Danie\\.nuget\\packages\\": {}
@@ -32,7 +67,14 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\Application.csproj": {
+              "projectPath": "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\Application.csproj"
+            },
+            "C:\\Github\\DbSync.EFCore.Demo\\src\\Infastructure\\Infastructure.csproj": {
+              "projectPath": "C:\\Github\\DbSync.EFCore.Demo\\src\\Infastructure\\Infastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
