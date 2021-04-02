@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebUI.Data
+namespace Application.Queries.GetWeatherForecasts
 {
     public class WeatherForecastService
     {

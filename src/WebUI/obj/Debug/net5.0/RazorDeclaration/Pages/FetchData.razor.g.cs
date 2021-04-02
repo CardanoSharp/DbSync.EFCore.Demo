@@ -84,7 +84,7 @@ using WebUI.Shared;
 #nullable disable
 #nullable restore
 #line 3 "C:\Github\DbSync.EFCore.Demo\src\WebUI\Pages\FetchData.razor"
-using WebUI.Data;
+using Application.Queries.GetWeatherForecasts;
 
 #line default
 #line hidden
