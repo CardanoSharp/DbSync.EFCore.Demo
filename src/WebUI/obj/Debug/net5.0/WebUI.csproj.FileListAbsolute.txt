@@ -76,10 +76,8 @@ C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.csproj.CoreCompile
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.MvcApplicationPartsAssemblyInfo.cache
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.RazorComponent.input.cache
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
-C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\Pages\Counter.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\Pages\FetchData.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
-C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
@@ -89,10 +87,8 @@ C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.TagHelpers.input.c
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.TagHelpers.output.cache
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.RazorCoreGenerate.cache
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\App.razor.g.cs
-C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\Pages\Counter.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\Pages\FetchData.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
-C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
@@ -118,3 +114,4 @@ C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Application.dll
 C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Infastructure.dll
 C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Application.pdb
 C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Infastructure.pdb
+C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\Pages\MintNativeAsset.cshtml.g.cs
