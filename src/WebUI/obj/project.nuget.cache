@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "5+k5iLj/nBw4k0Yom3E2JYUhbsR16/+63rDMXF+16O6zSjZ8CBu0w89K3KNCD42oRWzr7ycO/k14xFqYErrZCA==",
+  "dgSpecHash": "rEEUOpYQsHfkAkJ6mMeQCS5a3flTpzrgAIoSNMSHZ+Ii0gs7gLlfrQlktzKiRhxL+g3F/kb6eUo9Ooa2M8V4ag==",
   "success": true,
   "projectFilePath": "C:\\Github\\DbSync.EFCore.Demo\\src\\WebUI\\WebUI.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Danie\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
+    "C:\\Users\\Danie\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Danie\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.1\\microsoft.extensions.dependencyinjection.5.0.1.nupkg.sha512",
+    "C:\\Users\\Danie\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\Danie\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
