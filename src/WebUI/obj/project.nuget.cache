@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "rEEUOpYQsHfkAkJ6mMeQCS5a3flTpzrgAIoSNMSHZ+Ii0gs7gLlfrQlktzKiRhxL+g3F/kb6eUo9Ooa2M8V4ag==",
+  "dgSpecHash": "ie4b+MDAx6wdpj0VAi26RHpeF16BS13pQvsmXmtJtG1ZnLk9YTy4gY4nG209uyLUk+sXxZ2wsfJzjToUF7yLDA==",
   "success": true,
   "projectFilePath": "C:\\Github\\DbSync.EFCore.Demo\\src\\WebUI\\WebUI.csproj",
   "expectedPackageFiles": [
