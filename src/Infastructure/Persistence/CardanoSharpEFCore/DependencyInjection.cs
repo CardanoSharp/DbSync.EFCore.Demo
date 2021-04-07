@@ -7,6 +7,6 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        var connectionString = "Server=localhost;Port=5432;User Id=postgres;Password=yourPassword;Database=mydb;";
+        var connectionString = "Server=localhost;Port=5432;User Id=postgres;Password=yourPassword;Database=mydb;");
     }
 }
