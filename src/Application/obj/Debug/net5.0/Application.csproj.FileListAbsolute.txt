@@ -1,0 +1,12 @@
+C:\Github\DbSync.EFCore.Demo\src\Application\bin\Debug\net5.0\Application.deps.json
+C:\Github\DbSync.EFCore.Demo\src\Application\bin\Debug\net5.0\Application.dll
+C:\Github\DbSync.EFCore.Demo\src\Application\bin\Debug\net5.0\ref\Application.dll
+C:\Github\DbSync.EFCore.Demo\src\Application\bin\Debug\net5.0\Application.pdb
+C:\Github\DbSync.EFCore.Demo\src\Application\obj\Debug\net5.0\Application.csprojAssemblyReference.cache
+C:\Github\DbSync.EFCore.Demo\src\Application\obj\Debug\net5.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github\DbSync.EFCore.Demo\src\Application\obj\Debug\net5.0\Application.AssemblyInfoInputs.cache
+C:\Github\DbSync.EFCore.Demo\src\Application\obj\Debug\net5.0\Application.AssemblyInfo.cs
+C:\Github\DbSync.EFCore.Demo\src\Application\obj\Debug\net5.0\Application.csproj.CoreCompileInputs.cache
+C:\Github\DbSync.EFCore.Demo\src\Application\obj\Debug\net5.0\Application.dll
+C:\Github\DbSync.EFCore.Demo\src\Application\obj\Debug\net5.0\ref\Application.dll
+C:\Github\DbSync.EFCore.Demo\src\Application\obj\Debug\net5.0\Application.pdb
