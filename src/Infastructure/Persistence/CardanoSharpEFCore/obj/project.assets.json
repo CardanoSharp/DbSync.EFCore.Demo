@@ -129,19 +129,6 @@
           "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll": {}
         }
       },
-      "Microsoft.Extensions.Configuration/5.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Primitives": "5.0.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {}
-        }
-      },
       "Microsoft.Extensions.Configuration.Abstractions/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -282,21 +269,6 @@
         },
         "runtime": {
           "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
-        }
-      },
-      "Application/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "5.0.5",
-          "Microsoft.Extensions.Configuration": "5.0.0",
-          "Microsoft.Extensions.DependencyInjection": "5.0.1"
-        },
-        "compile": {
-          "bin/placeholder/Application.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Application.dll": {}
         }
       }
     }
@@ -453,26 +425,6 @@
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.xml",
         "microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
         "microsoft.extensions.caching.memory.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
-      ]
-    },
-    "Microsoft.Extensions.Configuration/5.0.0": {
-      "sha512": "LN322qEKHjuVEhhXueTUe7RNePooZmS8aGid5aK2woX3NPjSnONFyKUc6+JknOS6ce6h2tCLfKPTBXE3mN/6Ag==",
-      "type": "package",
-      "path": "microsoft.extensions.configuration/5.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/Microsoft.Extensions.Configuration.dll",
-        "lib/net461/Microsoft.Extensions.Configuration.xml",
-        "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll",
-        "lib/netstandard2.0/Microsoft.Extensions.Configuration.xml",
-        "microsoft.extensions.configuration.5.0.0.nupkg.sha512",
-        "microsoft.extensions.configuration.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
@@ -828,16 +780,10 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
-    },
-    "Application/1.0.0": {
-      "type": "project",
-      "path": "../../../Application/Application.csproj",
-      "msbuildProject": "../../../Application/Application.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Application >= 1.0.0",
       "CardanoDbSharp >= 0.1.1",
       "Microsoft.EntityFrameworkCore >= 5.0.5",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 5.0.2"
@@ -868,11 +814,7 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {
-            "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\Application.csproj": {
-              "projectPath": "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\Application.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
