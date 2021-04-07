@@ -19,7 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infastructure", "Infastruct
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{099C5918-C197-4F94-9570-E16D184A6CBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardanoSharpEFCore", "src\Infastructure\Persistence\CardanoSharpEFCore\CardanoSharpEFCore.csproj", "{B57319D8-30A1-435B-8550-E1862EEC1E23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardanoSharpEFCore", "src\Infastructure\Persistence\CardanoSharpEFCore\CardanoSharpEFCore.csproj", "{B57319D8-30A1-435B-8550-E1862EEC1E23}"
+	ProjectSection(ProjectDependencies) = postProject
+		{50C3F6B8-51EA-480E-B2C2-05D74003ED63} = {50C3F6B8-51EA-480E-B2C2-05D74003ED63}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

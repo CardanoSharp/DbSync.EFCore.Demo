@@ -4,14 +4,14 @@
     "C:\\Github\\DbSync.EFCore.Demo\\src\\Infastructure\\Persistence\\CardanoSharpEFCore\\CardanoSharpEFCore.csproj": {}
   },
   "projects": {
-    "C:\\Github\\DbSync.EFCore.Demo\\src\\Infastructure\\Persistence\\CardanoSharpEFCore\\CardanoSharpEFCore.csproj": {
+    "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Github\\DbSync.EFCore.Demo\\src\\Infastructure\\Persistence\\CardanoSharpEFCore\\CardanoSharpEFCore.csproj",
-        "projectName": "CardanoSharpEFCore",
-        "projectPath": "C:\\Github\\DbSync.EFCore.Demo\\src\\Infastructure\\Persistence\\CardanoSharpEFCore\\CardanoSharpEFCore.csproj",
+        "projectUniqueName": "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\Application.csproj",
+        "projectName": "Application",
+        "projectPath": "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\Danie\\.nuget\\packages\\",
-        "outputPath": "C:\\Github\\DbSync.EFCore.Demo\\src\\Infastructure\\Persistence\\CardanoSharpEFCore\\obj\\",
+        "outputPath": "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,77 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Github\\DbSync.EFCore.Demo\\src\\Infastructure\\Persistence\\CardanoSharpEFCore\\CardanoSharpEFCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Github\\DbSync.EFCore.Demo\\src\\Infastructure\\Persistence\\CardanoSharpEFCore\\CardanoSharpEFCore.csproj",
+        "projectName": "CardanoSharpEFCore",
+        "projectPath": "C:\\Github\\DbSync.EFCore.Demo\\src\\Infastructure\\Persistence\\CardanoSharpEFCore\\CardanoSharpEFCore.csproj",
+        "packagesPath": "C:\\Users\\Danie\\.nuget\\packages\\",
+        "outputPath": "C:\\Github\\DbSync.EFCore.Demo\\src\\Infastructure\\Persistence\\CardanoSharpEFCore\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\Application.csproj": {
+                "projectPath": "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
             "CardanoDbSharp": {
               "target": "Package",
               "version": "[0.1.1, )"
@@ -46,10 +117,6 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.5, )"
-            },
-            "Npgsql": {
-              "target": "Package",
-              "version": "[5.0.4, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
