@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wkVVIzlJ2k3mr4jPUtaWhsUnOYyX9ZZVJ0myI7SoGnhi+/BWkvwyI55jB+iEY/NPLMcO66YzhDHNiSvob85YlQ==",
+  "dgSpecHash": "jpFx2vFd5YaSoO6TlrRmDWT3Lbgr7zz6p5gwJnWeJ7yzMpVWJxpGt3VyCkX4j6rauVzqdVynROS3NHw+tJOioQ==",
   "success": true,
   "projectFilePath": "C:\\Github\\DbSync.EFCore.Demo\\src\\Infastructure\\Persistence\\CardanoSharpEFCore\\CardanoSharpEFCore.csproj",
   "expectedPackageFiles": [
@@ -20,7 +20,7 @@
     "C:\\Users\\Danie\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Danie\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\Danie\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
-    "C:\\Users\\Danie\\.nuget\\packages\\npgsql\\5.0.1.1\\npgsql.5.0.1.1.nupkg.sha512",
+    "C:\\Users\\Danie\\.nuget\\packages\\npgsql\\5.0.4\\npgsql.5.0.4.nupkg.sha512",
     "C:\\Users\\Danie\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\Danie\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\Danie\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",

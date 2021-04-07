@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using Npgsql;
 
-public class Class1
+public static class DependencyInjection
 {
-	public Class1()
-	{
-	}
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+    {
+        var connectionString = "Server=localhost;Port=5432;User Id=postgres;Password=yourPassword;Database=mydb;");
+    }
 }

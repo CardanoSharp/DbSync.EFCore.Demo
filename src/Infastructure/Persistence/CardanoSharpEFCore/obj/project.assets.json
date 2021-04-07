@@ -195,7 +195,7 @@
           "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
-      "Npgsql/5.0.1.1": {
+      "Npgsql/5.0.4": {
         "type": "package",
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "4.6.0"
@@ -537,10 +537,10 @@
         "version.txt"
       ]
     },
-    "Npgsql/5.0.1.1": {
-      "sha512": "vblKEzmyX/RkrC8ykx4yaiEOiURovDSnEw93KkY6nKDRJRLES95OM6hN4aYOoHfwkzPgENSFu1JMbMenoL1k9w==",
+    "Npgsql/5.0.4": {
+      "sha512": "wuJUsrhOKaR41ZB9Ecw9ZEpQzMQ5bRahl7w+pt4noVMDkDPbw4cMHV8UfNKeZSPLXaN4yWXPR2QgJ+2vG/85VQ==",
       "type": "package",
-      "path": "npgsql/5.0.1.1",
+      "path": "npgsql/5.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -552,7 +552,7 @@
         "lib/netstandard2.0/Npgsql.xml",
         "lib/netstandard2.1/Npgsql.dll",
         "lib/netstandard2.1/Npgsql.xml",
-        "npgsql.5.0.1.1.nupkg.sha512",
+        "npgsql.5.0.4.nupkg.sha512",
         "npgsql.nuspec",
         "postgresql.png"
       ]
@@ -730,7 +730,8 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "CardanoDbSharp >= 0.1.1",
-      "Microsoft.EntityFrameworkCore >= 5.0.5"
+      "Microsoft.EntityFrameworkCore >= 5.0.5",
+      "Npgsql >= 5.0.4"
     ]
   },
   "packageFolders": {
@@ -778,6 +779,10 @@
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.5, )"
+          },
+          "Npgsql": {
+            "target": "Package",
+            "version": "[5.0.4, )"
           }
         },
         "imports": [
