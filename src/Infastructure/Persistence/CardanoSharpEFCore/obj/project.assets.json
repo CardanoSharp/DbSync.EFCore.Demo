@@ -2,55 +2,6 @@
   "version": 3,
   "targets": {
     "net5.0": {
-      "CardanoDbSharp/0.1.1": {
-        "type": "package",
-        "dependencies": {
-          "Dapper": "2.0.78",
-          "Dapper.Contrib": "2.0.78",
-          "Dapper.FluentMap": "2.0.0",
-          "Microsoft.Extensions.Configuration.Abstractions": "5.0.0",
-          "Npgsql": "5.0.1.1"
-        },
-        "compile": {
-          "lib/net5.0/CardanoDbSharp.dll": {}
-        },
-        "runtime": {
-          "lib/net5.0/CardanoDbSharp.dll": {}
-        }
-      },
-      "Dapper/2.0.78": {
-        "type": "package",
-        "compile": {
-          "lib/net5.0/Dapper.dll": {}
-        },
-        "runtime": {
-          "lib/net5.0/Dapper.dll": {}
-        }
-      },
-      "Dapper.Contrib/2.0.78": {
-        "type": "package",
-        "dependencies": {
-          "Dapper": "2.0.78"
-        },
-        "compile": {
-          "lib/net5.0/Dapper.Contrib.dll": {}
-        },
-        "runtime": {
-          "lib/net5.0/Dapper.Contrib.dll": {}
-        }
-      },
-      "Dapper.FluentMap/2.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Dapper": "2.0.35"
-        },
-        "compile": {
-          "lib/netstandard2.0/Dapper.FluentMap.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Dapper.FluentMap.dll": {}
-        }
-      },
       "Microsoft.EntityFrameworkCore/5.0.5": {
         "type": "package",
         "dependencies": {
@@ -127,6 +78,19 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Configuration/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Primitives": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll": {}
         }
       },
       "Microsoft.Extensions.Configuration.Abstractions/5.0.0": {
@@ -270,69 +234,25 @@
         "runtime": {
           "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
+      },
+      "Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.5",
+          "Microsoft.Extensions.Configuration": "5.0.0",
+          "Microsoft.Extensions.DependencyInjection": "5.0.1"
+        },
+        "compile": {
+          "bin/placeholder/Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Application.dll": {}
+        }
       }
     }
   },
   "libraries": {
-    "CardanoDbSharp/0.1.1": {
-      "sha512": "YmkXJmW2hmr+TYAhggQ71jCOtn3jLaEVHN/9ESaKPcq3RVdFbz/9CsQc0Z7XstbeN2c9BCJ30dYSL3mGwXtGig==",
-      "type": "package",
-      "path": "cardanodbsharp/0.1.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "cardanodbsharp.0.1.1.nupkg.sha512",
-        "cardanodbsharp.nuspec",
-        "lib/net5.0/CardanoDbSharp.dll"
-      ]
-    },
-    "Dapper/2.0.78": {
-      "sha512": "vLPwL2HZXp/DN17Eu7sg6GMEj02alq7jcy6atn5Gv8i96b9Hu1UoxlCrhInUPfSFLQQiD8O7pdWAE1fdUEO/1Q==",
-      "type": "package",
-      "path": "dapper/2.0.78",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "dapper.2.0.78.nupkg.sha512",
-        "dapper.nuspec",
-        "lib/net461/Dapper.dll",
-        "lib/net461/Dapper.xml",
-        "lib/net5.0/Dapper.dll",
-        "lib/net5.0/Dapper.xml",
-        "lib/netstandard2.0/Dapper.dll",
-        "lib/netstandard2.0/Dapper.xml"
-      ]
-    },
-    "Dapper.Contrib/2.0.78": {
-      "sha512": "sUfDVIf8LlHNiz3MfUFodeyRiemfN1JFkPxYjCxFWlwNPg1iQ49mB+0E89TkywWs4X8fiRWOVDQgtH5FtzK5Kw==",
-      "type": "package",
-      "path": "dapper.contrib/2.0.78",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "dapper.contrib.2.0.78.nupkg.sha512",
-        "dapper.contrib.nuspec",
-        "lib/net461/Dapper.Contrib.dll",
-        "lib/net461/Dapper.Contrib.xml",
-        "lib/net5.0/Dapper.Contrib.dll",
-        "lib/net5.0/Dapper.Contrib.xml",
-        "lib/netstandard2.0/Dapper.Contrib.dll",
-        "lib/netstandard2.0/Dapper.Contrib.xml"
-      ]
-    },
-    "Dapper.FluentMap/2.0.0": {
-      "sha512": "UFSBuYreRQqOQfzSJ2HOnLvBolg5VFfBjS30ohM8DT4Yra/m+bEKAjVTmCBM1VDahWsPSsKqjX5eLR37MB/O+Q==",
-      "type": "package",
-      "path": "dapper.fluentmap/2.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "dapper.fluentmap.2.0.0.nupkg.sha512",
-        "dapper.fluentmap.nuspec",
-        "lib/netstandard2.0/Dapper.FluentMap.dll",
-        "lib/netstandard2.0/Dapper.FluentMap.xml"
-      ]
-    },
     "Microsoft.EntityFrameworkCore/5.0.5": {
       "sha512": "lBIGKXhduT94Qats0ImMma9NWnsSLhz04JdD+Mi7DeCDPd3hiA668jREzCiLb9FqcmAIrLx8pxIo9cwjEHfYtQ==",
       "type": "package",
@@ -425,6 +345,26 @@
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.xml",
         "microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
         "microsoft.extensions.caching.memory.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration/5.0.0": {
+      "sha512": "LN322qEKHjuVEhhXueTUe7RNePooZmS8aGid5aK2woX3NPjSnONFyKUc6+JknOS6ce6h2tCLfKPTBXE3mN/6Ag==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Configuration.dll",
+        "lib/net461/Microsoft.Extensions.Configuration.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.xml",
+        "microsoft.extensions.configuration.5.0.0.nupkg.sha512",
+        "microsoft.extensions.configuration.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
@@ -780,11 +720,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Application/1.0.0": {
+      "type": "project",
+      "path": "../../../Application/Application.csproj",
+      "msbuildProject": "../../../Application/Application.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "CardanoDbSharp >= 0.1.1",
+      "Application >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.5",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 5.0.2"
     ]
@@ -814,7 +759,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\Application.csproj": {
+              "projectPath": "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\Application.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -827,10 +776,6 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
-          "CardanoDbSharp": {
-            "target": "Package",
-            "version": "[0.1.1, )"
-          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.5, )"
