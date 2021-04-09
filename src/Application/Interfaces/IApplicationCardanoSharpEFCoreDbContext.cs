@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    public interface IApplicationCardanoSharpEFCoreDbContext : DbContext
+    public interface IApplicationCardanoSharpEFCoreDbContext 
     {
+        cardanoContext
     }
 }

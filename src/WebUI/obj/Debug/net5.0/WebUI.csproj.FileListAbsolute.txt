@@ -56,3 +56,6 @@ C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.dll
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\ref\WebUI.dll
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.pdb
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.genruntimeconfig.cache
+C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
