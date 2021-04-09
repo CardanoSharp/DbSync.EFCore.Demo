@@ -4,6 +4,65 @@
     "C:\\Github\\DbSync.EFCore.Demo\\src\\WebUI\\WebUI.csproj": {}
   },
   "projects": {
+    "C:\\Github\\cardanosharp-dbsync-efcore\\CardanoSharp.DbSync.EFCore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Github\\cardanosharp-dbsync-efcore\\CardanoSharp.DbSync.EFCore.csproj",
+        "projectName": "CardanoSharp.DbSync.EFCore",
+        "projectPath": "C:\\Github\\cardanosharp-dbsync-efcore\\CardanoSharp.DbSync.EFCore.csproj",
+        "packagesPath": "C:\\Users\\Danie\\.nuget\\packages\\",
+        "outputPath": "C:\\Github\\cardanosharp-dbsync-efcore\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -26,7 +85,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Github\\cardanosharp-dbsync-efcore\\CardanoSharp.DbSync.EFCore.csproj": {
+                "projectPath": "C:\\Github\\cardanosharp-dbsync-efcore\\CardanoSharp.DbSync.EFCore.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
