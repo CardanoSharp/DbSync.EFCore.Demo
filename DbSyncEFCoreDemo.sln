@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardanoSharp.DbSync.EFCore", "..\cardanosharp-dbsync-efcore\CardanoSharp.DbSync.EFCore.csproj", "{BAA2058B-D0E1-41B1-9ECF-E48560B9BFD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardanoSharpEFCoreDotNetFive", "CardanoSharpEFCoreDotNetFive\CardanoSharpEFCoreDotNetFive.csproj", "{D5A70B8D-6B39-4945-BF3B-006CE340EA0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{BAA2058B-D0E1-41B1-9ECF-E48560B9BFD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAA2058B-D0E1-41B1-9ECF-E48560B9BFD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAA2058B-D0E1-41B1-9ECF-E48560B9BFD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5A70B8D-6B39-4945-BF3B-006CE340EA0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5A70B8D-6B39-4945-BF3B-006CE340EA0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5A70B8D-6B39-4945-BF3B-006CE340EA0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5A70B8D-6B39-4945-BF3B-006CE340EA0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{62F4EB0C-1235-486C-A526-8053AE65AA77} = {07AB5999-6918-465B-8385-9B74009CCDE6}
 		{099C5918-C197-4F94-9570-E16D184A6CBD} = {62F4EB0C-1235-486C-A526-8053AE65AA77}
 		{BAA2058B-D0E1-41B1-9ECF-E48560B9BFD2} = {099C5918-C197-4F94-9570-E16D184A6CBD}
+		{D5A70B8D-6B39-4945-BF3B-006CE340EA0B} = {099C5918-C197-4F94-9570-E16D184A6CBD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3E754DD5-47FE-4651-90C3-4F448DF20BB2}
