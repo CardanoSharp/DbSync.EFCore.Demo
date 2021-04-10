@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "cnt366TTszIALoBZT1vJqkiOZ959o7emzZRaQzLQ+35qrt7tWv9Ok/9VujaizkC/YeAnwhADz7u6BrC7X4VTHQ==",
+  "success": true,
+  "projectFilePath": "C:\\Github\\DbSync.EFCore.Demo\\Application1\\Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Danie\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

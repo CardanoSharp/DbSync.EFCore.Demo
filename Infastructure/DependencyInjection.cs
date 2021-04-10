@@ -1,5 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Application.Interfaces;
+using CardanoSharp.DbSync.EntityFramework;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +16,14 @@ namespace Infastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            var connection = configuration.UseNpgsql
+            services.AddDbContext<CardanoContext>(options =>
+            options.UseNpgsql(configuration.GetConnectionString("Cardano")));
+
+            services.AddScoped<IApplicationCardanoSharpEFCoreDbContext>(provider => provider.GetService<IApplicationCardanoSharpEFCoreDbContext>());
+
+            return services;
+
+
         }
     }
 }
