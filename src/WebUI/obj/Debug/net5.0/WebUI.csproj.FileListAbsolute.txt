@@ -10,9 +10,14 @@ C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\ref\WebUI.dll
 C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\WebUI.pdb
 C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\WebUI.Views.dll
 C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\WebUI.Views.pdb
+C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
 C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Application.dll
+C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Domain.dll
 C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Application.pdb
+C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Domain.pdb
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.csprojAssemblyReference.cache
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.AssemblyInfoInputs.cache
@@ -23,6 +28,7 @@ C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.RazorComponent.inp
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\Pages\FetchData.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
+C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\Pages\TxInformation.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\Shared\MainLayout.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\Shared\NavMenu.razor.g.cs
@@ -34,6 +40,7 @@ C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.RazorCoreGenerate.
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\App.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\Pages\FetchData.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
+C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\Pages\TxInformation.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\Shared\MainLayout.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\Shared\NavMenu.razor.g.cs
@@ -55,13 +62,3 @@ C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.dll
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\ref\WebUI.dll
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.pdb
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.genruntimeconfig.cache
-C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
-C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
-C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Npgsql.dll
-C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
-C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\CardanoSharp.DbSync.EFCore.dll
-C:\Github\DbSync.EFCore.Demo\src\WebUI\bin\Debug\net5.0\CardanoSharp.DbSync.EFCore.pdb
-C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\Pages\TxInformation.razor.g.cs
-C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\Pages\TxInformation.razor.g.cs

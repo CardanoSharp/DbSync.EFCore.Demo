@@ -2,7 +2,6 @@ C:\Github\DbSync.EFCore.Demo\tests\ApplicationUnitTests\bin\Debug\net5.0\Applica
 C:\Github\DbSync.EFCore.Demo\tests\ApplicationUnitTests\bin\Debug\net5.0\ApplicationUnitTests.dll
 C:\Github\DbSync.EFCore.Demo\tests\ApplicationUnitTests\bin\Debug\net5.0\ref\ApplicationUnitTests.dll
 C:\Github\DbSync.EFCore.Demo\tests\ApplicationUnitTests\bin\Debug\net5.0\ApplicationUnitTests.pdb
-C:\Github\DbSync.EFCore.Demo\tests\ApplicationUnitTests\obj\Debug\net5.0\ApplicationUnitTests.csprojAssemblyReference.cache
 C:\Github\DbSync.EFCore.Demo\tests\ApplicationUnitTests\obj\Debug\net5.0\ApplicationUnitTests.GeneratedMSBuildEditorConfig.editorconfig
 C:\Github\DbSync.EFCore.Demo\tests\ApplicationUnitTests\obj\Debug\net5.0\ApplicationUnitTests.AssemblyInfoInputs.cache
 C:\Github\DbSync.EFCore.Demo\tests\ApplicationUnitTests\obj\Debug\net5.0\ApplicationUnitTests.AssemblyInfo.cs
