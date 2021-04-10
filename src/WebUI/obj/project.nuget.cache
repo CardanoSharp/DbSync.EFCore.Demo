@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "WrXGNM8HfVD07prR1sP8Z2G+ayQzJJFhYgPMiKnisIMJWtYtGYQkYRrDDEfCzy/pvR1pdF8TvbOyQSw0qFTZzg==",
-  "success": true,
+  "dgSpecHash": "dBs0Z3hSk5OUC38I5jw2AVB1R73tBpf4MI3UKeH40r1Oqmh9GdVfnoGbe2DEdltAidwtEDf0Dmwchmu6nFlSBQ==",
+  "success": false,
   "projectFilePath": "C:\\Github\\DbSync.EFCore.Demo\\src\\WebUI\\WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Danie\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.5\\microsoft.entityframeworkcore.5.0.5.nupkg.sha512",
@@ -25,5 +25,15 @@
     "C:\\Users\\Danie\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
     "C:\\Users\\Danie\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1108",
+      "level": "Error",
+      "message": "Cycle detected. \r\n  WebUI -> Application -> CardanoSharp.DbSync.EFCore -> Application.",
+      "libraryId": "Application",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }

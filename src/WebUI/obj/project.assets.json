@@ -255,6 +255,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
+          "Application": "1.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "5.0.2"
         },
         "compile": {
@@ -813,5 +814,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1108",
+      "level": "Error",
+      "message": "Cycle detected. \r\n  WebUI -> Application -> CardanoSharp.DbSync.EFCore -> Application.",
+      "libraryId": "Application",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }
