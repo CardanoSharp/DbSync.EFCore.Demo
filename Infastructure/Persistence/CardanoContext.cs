@@ -14,11 +14,6 @@ namespace CardanoSharp.DbSync.EntityFramework
         public CardanoContext(DbContextOptions<CardanoContext> options, IConfiguration config)
             : base(options)
         {
-            if (options is null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
-
             _config = config;
         }
         public virtual DbSet<AdaPot> AdaPots { get; set; }

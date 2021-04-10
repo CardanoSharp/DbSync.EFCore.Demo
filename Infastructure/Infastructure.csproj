@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\cardanosharp-dbsync-efcore\CardanoSharp.DbSync.EFCore.csproj" />
+    <ProjectReference Include="..\src\Application\Application.csproj" />
+  </ItemGroup>
+
+</Project>
