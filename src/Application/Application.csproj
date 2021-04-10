@@ -17,11 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\cardanosharp-dbsync-efcore\CardanoSharp.DbSync.EFCore.csproj" />
+    <Folder Include="Handlers - Copy\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Handlers - Copy\" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

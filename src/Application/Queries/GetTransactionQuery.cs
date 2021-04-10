@@ -8,6 +8,6 @@ namespace Application.Queries
 {
     class GetTransactionQuery
     {
-        public record 
+        public record TransactionInformation();
     }
 }
