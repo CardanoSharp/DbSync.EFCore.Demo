@@ -1,14 +1,20 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
 using Microsoft.EntityFrameworkCore;
+using CardanoSharp.DbSync.EntityFramework;
 
-namespace Infastructure
+public static class DependencyInjection
 {
-    public static class DependencyInjection
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
-        {
-            return services;
-        }
+
+        var builder = new NpgsqlConnectionStringBuilder(configuration.GetConnectionString("Cardano"));
+
+        services.AddDbContext<CardanoContext>(options => options.UseNpgsql(builder.ConnectionString));
+
+        return services; 
+
+
     }
 }

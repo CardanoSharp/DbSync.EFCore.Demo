@@ -349,6 +349,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
+          "Application": "1.0.0",
           "CardanoSharp.DbSync.EFCore": "1.0.0",
           "Microsoft.EntityFrameworkCore": "5.0.5",
           "Microsoft.Extensions.Configuration": "5.0.0",

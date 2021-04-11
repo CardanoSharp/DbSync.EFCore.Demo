@@ -228,6 +228,9 @@
             "projectReferences": {
               "C:\\Github\\DbSync.EFCore.Demo\\cardanosharp-dbsync-efcore-main\\cardanosharp-dbsync-efcore-main\\CardanoSharp.DbSync.EFCore.csproj": {
                 "projectPath": "C:\\Github\\DbSync.EFCore.Demo\\cardanosharp-dbsync-efcore-main\\cardanosharp-dbsync-efcore-main\\CardanoSharp.DbSync.EFCore.csproj"
+              },
+              "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\Application.csproj": {
+                "projectPath": "C:\\Github\\DbSync.EFCore.Demo\\src\\Application\\Application.csproj"
               }
             }
           }
