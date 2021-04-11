@@ -1,14 +1,9 @@
-﻿using Application.Interfaces;
+﻿using Application.Common.Interfaces;
 using CardanoSharp.DbSync.EntityFramework;
+using Infastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infastructure
 {
@@ -19,8 +14,8 @@ namespace Infastructure
             services.AddDbContext<CardanoContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("Cardano")));
 
-            services.AddScoped<IApplicationCardanoSharpEFCoreDbContext>(provider => provider.GetService<IApplicationCardanoSharpEFCoreDbContext>());
-
+            services.AddTransient<IQueries, Queries>();
+            
             return services;
 
 
