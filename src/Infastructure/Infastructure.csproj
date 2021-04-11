@@ -14,4 +14,8 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\cardanosharp-dbsync-efcore-main\cardanosharp-dbsync-efcore-main\CardanoSharp.DbSync.EFCore.csproj" />
+  </ItemGroup>
+
 </Project>

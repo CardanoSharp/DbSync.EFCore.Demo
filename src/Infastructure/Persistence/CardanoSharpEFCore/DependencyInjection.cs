@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 using Microsoft.EntityFrameworkCore;
+using CardanoSharp.DbSync.EntityFramework;
 
 public static class DependencyInjection
 {
