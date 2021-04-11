@@ -1,5 +1,0 @@
-C:\Github\DbSync.EFCore.Demo\Infastructure\obj\Debug\net5.0\Infastructure.csprojAssemblyReference.cache
-C:\Github\DbSync.EFCore.Demo\Infastructure\obj\Debug\net5.0\Infastructure.GeneratedMSBuildEditorConfig.editorconfig
-C:\Github\DbSync.EFCore.Demo\Infastructure\obj\Debug\net5.0\Infastructure.AssemblyInfoInputs.cache
-C:\Github\DbSync.EFCore.Demo\Infastructure\obj\Debug\net5.0\Infastructure.AssemblyInfo.cs
-C:\Github\DbSync.EFCore.Demo\Infastructure\obj\Debug\net5.0\Infastructure.csproj.CoreCompileInputs.cache
