@@ -1,0 +1,17 @@
+﻿@page "/BlockInformation"
+@inject MediatR.IMediator _mediator
+@using Application.Handlers; 
+
+<h1>Enter the Slot leader to get the block information</h1>
+
+@code {
+
+    private int slotLeader;
+    private int blocknumber;
+
+    private int GetBlockInformation(int slotLeader)
+    {
+        _mediator.Send(new GetBlockInformationQuery(slotLeader));
+    }
+
+}
