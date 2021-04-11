@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestingLibrariesBeforeNuget
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardanoSharp.DbSync.EFCore", "..\cardanosharp-dbsync-efcore\CardanoSharp.DbSync.EFCore.csproj", "{BAA2058B-D0E1-41B1-9ECF-E48560B9BFD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infastructure", "Infastructure\Infastructure.csproj", "{12EF6EF7-B724-42E4-9675-351ED27A9237}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infastructure", "src\Infastructure\Infastructure.csproj", "{A11F1D7D-8F1D-4319-B3B0-1072CF3B375A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{BAA2058B-D0E1-41B1-9ECF-E48560B9BFD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAA2058B-D0E1-41B1-9ECF-E48560B9BFD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAA2058B-D0E1-41B1-9ECF-E48560B9BFD2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12EF6EF7-B724-42E4-9675-351ED27A9237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12EF6EF7-B724-42E4-9675-351ED27A9237}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12EF6EF7-B724-42E4-9675-351ED27A9237}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12EF6EF7-B724-42E4-9675-351ED27A9237}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A11F1D7D-8F1D-4319-B3B0-1072CF3B375A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A11F1D7D-8F1D-4319-B3B0-1072CF3B375A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A11F1D7D-8F1D-4319-B3B0-1072CF3B375A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A11F1D7D-8F1D-4319-B3B0-1072CF3B375A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,7 +62,7 @@ Global
 		{129A32E9-9813-4F20-B51D-D48531D3F5D9} = {FCD979A0-EBC0-49A8-A2CB-A08564E2D36F}
 		{099C5918-C197-4F94-9570-E16D184A6CBD} = {07AB5999-6918-465B-8385-9B74009CCDE6}
 		{BAA2058B-D0E1-41B1-9ECF-E48560B9BFD2} = {099C5918-C197-4F94-9570-E16D184A6CBD}
-		{12EF6EF7-B724-42E4-9675-351ED27A9237} = {07AB5999-6918-465B-8385-9B74009CCDE6}
+		{A11F1D7D-8F1D-4319-B3B0-1072CF3B375A} = {07AB5999-6918-465B-8385-9B74009CCDE6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3E754DD5-47FE-4651-90C3-4F448DF20BB2}

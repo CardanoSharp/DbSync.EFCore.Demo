@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "atDiEzym01yQS5+z220L3bapzdX/mEVlZppnlv60sjKvI5tx5hc4B2GSFx1ppokBjDjnaNVFHFCOiu51F6bRoQ==",
+  "dgSpecHash": "/nGrYl+q9faN1LUZLWee9X826Ll9TIXNXPjmK8ajQJtOeOlk3AEtqMaVHenRdZiR0D3Qoi0TqffWVyJi9yPDPQ==",
   "success": true,
   "projectFilePath": "C:\\Github\\DbSync.EFCore.Demo\\src\\WebUI\\WebUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Danie\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\Danie\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\Danie\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
+    "C:\\Users\\Danie\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
     "C:\\Users\\Danie\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Danie\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.5\\microsoft.entityframeworkcore.5.0.5.nupkg.sha512",
     "C:\\Users\\Danie\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.5\\microsoft.entityframeworkcore.abstractions.5.0.5.nupkg.sha512",
