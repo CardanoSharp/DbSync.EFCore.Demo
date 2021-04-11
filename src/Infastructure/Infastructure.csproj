@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Persistence\CardanoSharpEFCore\CardanoSharpEFCore.csproj" />
+    <None Include="Persistence\CardanoSharpEFCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +20,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\cardanosharp-dbsync-efcore-main\cardanosharp-dbsync-efcore-main\CardanoSharp.DbSync.EFCore.csproj" />
     <ProjectReference Include="..\Application\Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Persistence\CardanoSharpEFCore\" />
   </ItemGroup>
 
 </Project>
