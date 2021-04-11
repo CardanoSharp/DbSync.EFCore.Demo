@@ -1,17 +1,32 @@
 ﻿@page "/BlockInformation"
 @inject MediatR.IMediator _mediator
-@using Application.Handlers; 
+@using Application.Handlers;
 
 <h1>Enter the Slot leader to get the block information</h1>
+
+<p>
+    <label>
+        Enter the slot leader to get the block number:
+        <input @bind="slotLeader" />
+    </label>
+</p>
+
+<p>
+    <code>slotLeader</code> : @GetBlockInformation(slotLeader)
+</p>
 
 @code {
 
     private int slotLeader;
     private int blocknumber;
 
-    private int GetBlockInformation(int slotLeader)
+    private async Task<int> GetBlockInformation(int slotLeader)
     {
-        _mediator.Send(new GetBlockInformationQuery(slotLeader));
+
+        blocknumber = await _mediator.Send(new GetBlockNumberBySlotLeaderQuery(slotLeader));
+
+        return blocknumber;
+
     }
 
 }
