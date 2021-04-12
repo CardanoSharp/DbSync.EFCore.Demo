@@ -98,16 +98,22 @@ using Application.Handlers;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "C:\Github\DbSync.EFCore.Demo\src\WebUI\Pages\BlockInformation.razor"
+#line 14 "C:\Github\DbSync.EFCore.Demo\src\WebUI\Pages\BlockInformation.razor"
        
 
-    private int slotLeader;
-    private int blocknumber;
+    private Block block = new(); 
+
+    private class Block
+    {
+        public int slotLeader { get; set; }
+        public int blockNumber { get; set; }
+    }
+
 
     private async Task GetBlockInformation()
     {
 
-        blocknumber = await _mediator.Send(new GetBlockNumberBySlotLeaderQuery(slotLeader));
+        block.blockNumber = await _mediator.Send(new GetBlockNumberBySlotLeaderQuery(block.slotLeader));
 
 
     }

@@ -4,17 +4,28 @@
 
 <h1>Enter the Slot leader to get the block information</h1>
 
-<input type="number" @bind="@slotLeader" />
+<EditForm Model="block" OnValidSubmit="GetBlockInformation">
+    <InputNumber @bind-Value="block.slotLeader" />
+    <button type="submit">Get Block Number</button>
+</EditForm>
+
+<p>@block.blockNumber</p>
 
 @code {
 
-    private int slotLeader;
-    private int blocknumber;
+    private Block block = new(); 
+
+    private class Block
+    {
+        public int slotLeader { get; set; }
+        public int blockNumber { get; set; }
+    }
+
 
     private async Task GetBlockInformation()
     {
 
-        blocknumber = await _mediator.Send(new GetBlockNumberBySlotLeaderQuery(slotLeader));
+        block.blockNumber = await _mediator.Send(new GetBlockNumberBySlotLeaderQuery(block.slotLeader));
 
 
     }
