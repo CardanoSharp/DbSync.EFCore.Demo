@@ -101,19 +101,19 @@ using Application.Handlers;
 #line 14 "C:\Github\DbSync.EFCore.Demo\src\WebUI\Pages\BlockInformation.razor"
        
 
-    private Block block = new(); 
+    private Block block = new();
 
     private class Block
     {
-        public int slotLeader { get; set; }
-        public int blockNumber { get; set; }
+        public int SlotLeader { get; set; }
+        public int BlockNumber { get; set; }
     }
 
 
     private async Task GetBlockInformation()
     {
 
-        block.blockNumber = await _mediator.Send(new GetBlockNumberBySlotLeaderQuery(block.slotLeader));
+        block.BlockNumber = await _mediator.Send(new GetBlockNumberBySlotLeaderQuery(block.SlotLeader));
 
 
     }

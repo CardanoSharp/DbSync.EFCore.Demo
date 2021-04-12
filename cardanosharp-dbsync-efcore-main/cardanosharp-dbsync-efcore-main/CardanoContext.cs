@@ -54,7 +54,7 @@ namespace CardanoSharp.DbSync.EntityFramework
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql(_config.GetConnectionString("Cardano"));
+                optionsBuilder.UseNpgsql("User ID=postgrest_ro;Password=CHANGEME;Host=localhost;Port=5432;Database=cdbs;");
             }
         }
 
