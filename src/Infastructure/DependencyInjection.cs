@@ -14,6 +14,7 @@ public static class DependencyInjection
         var builder = new NpgsqlConnectionStringBuilder(configuration.GetConnectionString("Cardano"));
 
         services.AddDbContext<CardanoContext>(options => options.UseNpgsql(builder.ConnectionString));
+        
         services.AddTransient<IQueries, Queries>();
 
         return services; 
