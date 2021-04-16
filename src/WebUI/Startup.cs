@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Application.Queries.GetWeatherForecasts;
+
 using Application;
 using Infastructure; 
 namespace WebUI
@@ -25,7 +25,6 @@ namespace WebUI
             services.AddInfrastructure(Configuration);
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
 
 
         }
