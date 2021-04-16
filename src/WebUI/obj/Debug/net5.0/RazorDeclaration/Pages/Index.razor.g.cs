@@ -82,6 +82,13 @@ using WebUI.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Github\DbSync.EFCore.Demo\src\WebUI\Pages\Index.razor"
+using Application.BlockChainTransactions;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -90,6 +97,17 @@ using WebUI.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 9 "C:\Github\DbSync.EFCore.Demo\src\WebUI\Pages\Index.razor"
+       protected override void OnInitialized()
+    {
+        _mediator.Send(new TransactionsPerEpoch.Command(259));
+    }
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private MediatR.IMediator _mediator { get; set; }
     }
 }
 #pragma warning restore 1591

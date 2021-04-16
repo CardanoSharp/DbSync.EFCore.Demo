@@ -1,5 +1,7 @@
 ﻿using Application.Common.Interfaces;
 using CardanoSharp.DbSync.EntityFramework;
+using CardanoSharp.DbSync.EntityFramework.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Infastructure.Persistence
@@ -19,7 +21,17 @@ namespace Infastructure.Persistence
 
         public int GetTransactionsPerEpoch(int epoch)
         {
-            return 1;
+            int numberOfTransactions = 0;
+
+            var txListInEpoch = _cardanoContext.Txes.AsEnumerable().GroupBy(s => s.Block.EpochNo == epoch);
+
+            foreach(Tx tx in txListInEpoch)
+            {
+                numberOfTransactions = +1;
+            }
+
+            return numberOfTransactions; 
+
         }
     }
 }

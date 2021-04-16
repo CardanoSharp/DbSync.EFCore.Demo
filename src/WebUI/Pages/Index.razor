@@ -1,6 +1,13 @@
 ﻿@page "/"
+@inject MediatR.IMediator _mediator
+@using Application.BlockChainTransactions;
 
 <h1>Welcome to the Cardano Sharp EF Core Demo</h1>
 
-This will guide you through how to use Cardano Sharp and its uses. 
+This will guide you through how to use Cardano Sharp and its uses.
 
+@code{ protected override void OnInitialized()
+    {
+        _mediator.Send(new TransactionsPerEpoch.Command(259));
+    }
+}
