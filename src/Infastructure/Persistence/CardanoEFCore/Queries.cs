@@ -1,36 +1,41 @@
 ﻿using Application.Common.Interfaces;
+using AutoMapper;
 using CardanoSharp.DbSync.EntityFramework;
 using CardanoSharp.DbSync.EntityFramework.Models;
-using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using static Application.BlockChainTransactions.TransactionsPerEpoch;
 
 namespace Infastructure.Persistence
 {
     public class Queries : IQueries
     {
         private readonly CardanoContext _cardanoContext;
+        private readonly IMapper _mapper;
 
-        public Queries(CardanoContext cardanoContext)
+        public Queries(CardanoContext cardanoContext, IMapper mapper)
         {
-            _cardanoContext = cardanoContext; 
+            _cardanoContext = cardanoContext;
+            _mapper = mapper;
         }
         public int GetBlockInformation(int slotNumber)
         {
             return (int)_cardanoContext.Blocks.Where(s => s.EpochSlotNo == slotNumber).Select(s => s.BlockNo).FirstOrDefault();
         }
 
-        public int GetTransactionsPerEpoch(int epoch)
+        public List<Response> GetTransactionsPerEpoch(int epoch)
         {
-            int numberOfTransactions = 0;
+            List<Response> returnList = new List<Response>();
 
-            var txListInEpoch = _cardanoContext.Txes.AsEnumerable().GroupBy(s => s.Block.EpochNo == epoch);
+            var txesInEpoch = _cardanoContext.Blocks.AsEnumerable().Where(s => s.EpochNo == epoch).SelectMany(s => s.Txes).ToList(); 
 
-            foreach(Tx tx in txListInEpoch)
+            foreach(var tx in txesInEpoch)
             {
-                numberOfTransactions = +1;
+                returnList.Add(_mapper.Map<Response>(tx.TxInTxOuts)); 
             }
 
-            return numberOfTransactions; 
+            return returnList; 
 
         }
     }
