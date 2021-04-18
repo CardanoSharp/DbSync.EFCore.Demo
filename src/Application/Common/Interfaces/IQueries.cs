@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using static Application.BlockChainTransactions.TransactionsPerEpoch;
 
 namespace Application.Common.Interfaces
@@ -7,6 +8,6 @@ namespace Application.Common.Interfaces
     {
         int GetBlockInformation(int slotNumber);
 
-        List<Response> GetTransactionsPerEpoch(int epoch); 
+        Task<List<Response>> GetTransactionsPerEpochAsync(int epoch);
     }
 }

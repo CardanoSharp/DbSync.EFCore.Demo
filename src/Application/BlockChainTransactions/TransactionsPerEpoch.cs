@@ -25,9 +25,9 @@ namespace Application.BlockChainTransactions
                 _mapper = mapper;
             }
 
-            public Task<List<Response>> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<List<Response>> Handle(Command request, CancellationToken cancellationToken)
             {
-                return Task.FromResult(_context.GetTransactionsPerEpoch(request.Epoch));
+                return await _context.GetTransactionsPerEpochAsync(request.Epoch);
             }
         }
 

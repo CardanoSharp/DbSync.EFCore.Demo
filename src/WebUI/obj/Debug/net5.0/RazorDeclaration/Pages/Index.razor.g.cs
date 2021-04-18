@@ -101,7 +101,7 @@ using Application.BlockChainTransactions;
 #line 9 "C:\Github\DbSync.EFCore.Demo\src\WebUI\Pages\Index.razor"
        protected override void OnInitialized()
     {
-        _mediator.Send(new TransactionsPerEpoch.Command(259));
+        _mediator.Send(new TransactionsPerEpoch.Command(10));
     }
 
 #line default
