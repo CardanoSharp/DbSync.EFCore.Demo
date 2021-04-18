@@ -90,7 +90,7 @@ using WebUI.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "C:\Github\DbSync.EFCore.Demo\src\WebUI\Shared\NavMenu.razor"
+#line 23 "C:\Github\DbSync.EFCore.Demo\src\WebUI\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

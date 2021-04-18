@@ -28,12 +28,18 @@ namespace Infastructure.Persistence
         public async Task<List<Response>> GetTransactionsPerEpochAsync(int epoch)
         {
             List<Response> returnList = new();
-            
-            var txesInEpoch = await _cardanoContext.Blocks
+
+            var txesinepoch = await _cardanoContext.Blocks
                 .Where(x => x.EpochNo == epoch)
                 .Include(x => x.Txes)
-                .ThenInclude(s => s.TxOuts)
+                .ThenInclude(s => s.TxInTxOuts)
                 .ToListAsync();
+
+            var test = await _cardanoContext.Txes
+                .Where(s => s.BlockId == epoch)
+                .Select(s => s.TxInTxOuts)
+                .ToListAsync();
+
 
 
             return returnList;
