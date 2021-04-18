@@ -30,15 +30,11 @@ namespace Infastructure.Persistence
             List<Response> returnList = new();
             
             var txesInEpoch = await _cardanoContext.Blocks
-                .Include(x => x.Txes)
-                .ThenInclude(s => s.TxInTxOuts)
                 .Where(x => x.EpochNo == epoch)
+                .Include(x => x.Txes)
+                .ThenInclude(s => s.TxOuts)
                 .ToListAsync();
 
-            foreach (var tx in txesInEpoch)
-            {
-                returnList.Add(_mapper.Map<Response>(tx));
-            }
 
             return returnList;
 
