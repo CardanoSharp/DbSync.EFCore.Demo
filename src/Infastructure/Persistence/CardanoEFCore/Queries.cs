@@ -27,6 +27,8 @@ namespace Infastructure.Persistence
 
         public async Task<List<Response>> GetTransactionsPerEpochAsync(int epoch)
         {
+
+            // TODO Make the below work. The first one returns the block in an epoch, and the second returns nothing. 
             List<Response> returnList = new();
 
             var txesinepoch = await _cardanoContext.Blocks
