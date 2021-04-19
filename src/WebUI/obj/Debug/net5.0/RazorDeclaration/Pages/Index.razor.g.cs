@@ -109,7 +109,7 @@ using WebUI.DataComponents;
        
     protected override Task OnInitializedAsync()
     {
-        return _mediator.Send(new TransactionsPerEpoch.Command(49));
+        return _mediator.Send(new TransactionsPerEpoch.Command(1));
     }
 
 #line default
