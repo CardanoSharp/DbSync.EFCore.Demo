@@ -31,6 +31,6 @@ namespace Application.BlockChainTransactions
             }
         }
 
-        public record Response(long Id, long TxInId, long TxOutId, short TxOutIndex ); 
+        public record Response(long Id, int Size, byte[] Hash, decimal Fee ); 
     }
 }

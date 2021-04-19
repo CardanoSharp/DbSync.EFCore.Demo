@@ -69,3 +69,5 @@ C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.dll
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\ref\WebUI.dll
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.pdb
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.genruntimeconfig.cache
+C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\DataComponents\TransactionsPerEpochComponent.razor.g.cs
+C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\DataComponents\TransactionsPerEpochComponent.razor.g.cs

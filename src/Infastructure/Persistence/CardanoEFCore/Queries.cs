@@ -31,20 +31,23 @@ namespace Infastructure.Persistence
             // TODO Make the below work. The first one returns the block in an epoch, and the second returns nothing. 
             List<Response> returnList = new();
 
-            var txesinepoch = await _cardanoContext.Blocks
+            var blocksInEpoch = await _cardanoContext.Blocks
                 .Where(x => x.EpochNo == epoch)
-                .Include(x => x.Txes)
-                .ThenInclude(s => s.TxInTxOuts)
                 .ToListAsync();
 
-            var test = await _cardanoContext.Txes
-                .Where(s => s.BlockId == epoch)
-                .Select(s => s.TxInTxOuts)
-                .ToListAsync();
+            foreach (var block in blocksInEpoch)
+            {
+                foreach (var tx in block.Txes)
+                {
+                    returnList.Add(new Response(tx.Id, tx.Size, tx.Hash, tx.Fee)); 
 
 
 
-            return returnList;
+
+                }
+            }
+
+                return returnList;
 
         }
     }

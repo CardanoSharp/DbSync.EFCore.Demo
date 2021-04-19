@@ -1,0 +1,14 @@
+﻿@using Application.BlockChainTransactions;
+@inject MediatR.IMediator _mediator
+
+
+<p>Transactions Per Epoch</p>
+<p> Transactions for epoch or enter your own</p>
+
+@code {
+
+    protected override Task OnInitializedAsync()
+    {
+       return  _mediator.Send(new TransactionsPerEpoch.Command(10));
+    }
+}

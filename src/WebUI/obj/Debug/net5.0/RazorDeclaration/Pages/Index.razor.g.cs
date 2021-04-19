@@ -89,6 +89,13 @@ using Application.BlockChainTransactions;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Github\DbSync.EFCore.Demo\src\WebUI\Pages\Index.razor"
+using WebUI.DataComponents;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/")]
     public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -98,10 +105,11 @@ using Application.BlockChainTransactions;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "C:\Github\DbSync.EFCore.Demo\src\WebUI\Pages\Index.razor"
-       protected override void OnInitialized()
+#line 14 "C:\Github\DbSync.EFCore.Demo\src\WebUI\Pages\Index.razor"
+       
+    protected override Task OnInitializedAsync()
     {
-        _mediator.Send(new TransactionsPerEpoch.Command(10));
+        return _mediator.Send(new TransactionsPerEpoch.Command(49));
     }
 
 #line default
