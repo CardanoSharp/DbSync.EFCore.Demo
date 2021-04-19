@@ -28,16 +28,16 @@ namespace Infastructure.Persistence
         public async Task<List<Response>> GetTransactionsPerEpochAsync(int epoch)
         {
 
-            // TODO Make the below work. The first one returns the block in an epoch, and the second returns nothing. 
+            // TODO Rework the query
             List<Response> returnList = new();
 
             var blocksInEpoch = await _cardanoContext.Blocks
                 .Where(x => x.EpochNo == epoch)
                 .ToListAsync();
 
-            foreach (var block in blocksInEpoch)
+            foreach (var block in blocksInEpoch) // blocks in Epoch shows the slots in the epoch
             {
-                foreach (var tx in block.Txes)
+                foreach (var tx in block.Txes) // Each block contains 0 Txes? 
                 {
                     returnList.Add(new Response(tx.Id, tx.Size, tx.Hash, tx.Fee)); 
 
