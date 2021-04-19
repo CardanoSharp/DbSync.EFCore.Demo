@@ -1,11 +1,12 @@
 ﻿using Application.Common.Interfaces;
 using AutoMapper;
 using CardanoSharp.DbSync.EntityFramework;
-using CardanoSharp.DbSync.EntityFramework.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Application.EpochData.GetCurrentEpoch;
 using static Application.BlockChainTransactions.TransactionsPerEpoch;
 
 namespace Infastructure.Persistence
@@ -13,12 +14,10 @@ namespace Infastructure.Persistence
     public class Queries : IQueries
     {
         private readonly CardanoContext _cardanoContext;
-        private readonly IMapper _mapper;
 
-        public Queries(CardanoContext cardanoContext, IMapper mapper)
+        public Queries(CardanoContext cardanoContext)
         {
             _cardanoContext = cardanoContext;
-            _mapper = mapper;
         }
         public int GetBlockInformation(int slotNumber)
         {
@@ -35,11 +34,11 @@ namespace Infastructure.Persistence
             var blocksInEpoch = await _cardanoContext.Blocks
                 .Where(x => x.EpochNo == epoch)
                 .Include(x => x.Txes)
-                .ToListAsync();
+                .ToListAsync();  
 
-            foreach (var block in blocksInEpoch) // blocks in Epoch shows the slots in the epoch
+            foreach (var block in blocksInEpoch) 
             {
-                foreach (var tx in block.Txes) // Each block contains 0 Txes? 
+                foreach (var tx in block.Txes) 
                 {
                     returnList.Add(new Response(tx.Id, tx.Size, tx.Hash, tx.Fee));
                     txCount += block.TxCount;
@@ -48,6 +47,13 @@ namespace Infastructure.Persistence
             txCount.ToString(); 
             return returnList;
 
+        }
+
+        public async Task<Respone> GetCurrentEpoch()
+        {
+            var currentEpoch = await _cardanoContext.Blocks.OrderByDescending(s => s.EpochNo).FirstOrDefaultAsync();
+
+            return new Respone(currentEpoch.EpochNo ?? 0); 
         }
     }
 }

@@ -1,14 +1,17 @@
 ﻿@using Application.BlockChainTransactions;
+@using Application.EpochData; 
 @inject MediatR.IMediator _mediator
 
 
 <p>Transactions Per Epoch</p>
-<p> Transactions for epoch or enter your own</p>
+<p> Transactions for Epoch</p>
 
 @code {
+    public int currentEpoch { get; set; }
 
-    protected override Task OnInitializedAsync()
+    protected async override Task<List<TransactionsPerEpoch.Response>> OnInitializedAsync()
     {
-       return  _mediator.Send(new TransactionsPerEpoch.Command(10));
+        var respone = _mediator.Send(new GetCurrentEpoch.Command());
+        return await _mediator.Send(new TransactionsPerEpoch.Command(10));
     }
 }

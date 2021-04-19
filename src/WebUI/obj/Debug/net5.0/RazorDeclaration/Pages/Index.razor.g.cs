@@ -84,7 +84,7 @@ using WebUI.Shared;
 #nullable disable
 #nullable restore
 #line 3 "C:\Github\DbSync.EFCore.Demo\src\WebUI\Pages\Index.razor"
-using Application.BlockChainTransactions;
+using Application.EpochData;
 
 #line default
 #line hidden
@@ -104,17 +104,6 @@ using WebUI.DataComponents;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 14 "C:\Github\DbSync.EFCore.Demo\src\WebUI\Pages\Index.razor"
-       
-    protected override Task OnInitializedAsync()
-    {
-        return _mediator.Send(new TransactionsPerEpoch.Command(1));
-    }
-
-#line default
-#line hidden
-#nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private MediatR.IMediator _mediator { get; set; }
     }
 }

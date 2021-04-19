@@ -17,13 +17,11 @@ namespace Application.BlockChainTransactions
         public class Handler : IRequestHandler<Command, List<Response>>
         {
             private readonly IQueries _context;
-            private readonly IMapper _mapper;
 
-            public Handler(IQueries context, IMapper mapper)
+            public Handler(IQueries context)
             {
                 _context = context;
-                _mapper = mapper;
-            }
+            }            
 
             public async Task<List<Response>> Handle(Command request, CancellationToken cancellationToken)
             {
