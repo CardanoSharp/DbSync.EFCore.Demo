@@ -13,7 +13,6 @@ namespace Application.EpochData
     public static class GetCurrentEpoch
     {
         public record Command() : IRequest<Respone>;
-
         public class Handler : IRequestHandler<Command, Respone>
         {
 

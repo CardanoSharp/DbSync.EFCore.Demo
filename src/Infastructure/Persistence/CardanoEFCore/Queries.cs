@@ -29,22 +29,20 @@ namespace Infastructure.Persistence
 
             // TODO Rework the query
             List<TransactionsInEpoch> returnList = new();
-            long txCount = 0;
 
             var blocksInEpoch = await _cardanoContext.Blocks
-                .Where(x => x.EpochNo == epoch)
+                .Where(x => x.EpochNo == epoch) 
                 .Include(x => x.Txes)
-                .ToListAsync();  
+                .ToListAsync(); 
 
             foreach (var block in blocksInEpoch) 
             {
                 foreach (var tx in block.Txes) 
                 {
                     returnList.Add(new TransactionsInEpoch(tx.Id, tx.Size, tx.Hash, tx.Fee));
-                    txCount += block.TxCount;
                 }
             }
-            txCount.ToString(); 
+            
             return returnList;
 
         }
