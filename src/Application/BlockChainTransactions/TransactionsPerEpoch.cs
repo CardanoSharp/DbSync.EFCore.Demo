@@ -6,14 +6,13 @@ using System.Threading;
 using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using AutoMapper;
-using MediatR; 
+using MediatR;
 
 namespace Application.BlockChainTransactions
 {
     public static class TransactionsPerEpoch
     {
         public record UserEnteredEochCommand(int Epoch) : IRequest<List<TransactionsInEpoch>>;
-
         public class Handler : IRequestHandler<UserEnteredEochCommand, List<TransactionsInEpoch>>
         {
             private readonly IQueries _context;
@@ -21,7 +20,7 @@ namespace Application.BlockChainTransactions
             public Handler(IQueries context)
             {
                 _context = context;
-            }            
+            }
 
             public async Task<List<TransactionsInEpoch>> Handle(UserEnteredEochCommand request, CancellationToken cancellationToken)
             {
@@ -29,6 +28,6 @@ namespace Application.BlockChainTransactions
             }
         }
 
-        public record TransactionsInEpoch(long Id, int Size, byte[] Hash, decimal Fee ); 
+        public record TransactionsInEpoch(long Id, int Size, byte[] Hash, decimal Fee);
     }
 }
