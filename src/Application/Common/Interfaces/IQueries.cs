@@ -9,7 +9,7 @@ namespace Application.Common.Interfaces
     {
         int GetBlockInformation(int slotNumber);
 
-        Task<List<Response>> GetTransactionsPerEpochAsync(int epoch);
+        Task<List<TransactionsInEpoch>> GetTransactionsPerEpochAsync(int epoch);
 
         Task<Respone> GetCurrentEpoch(); 
     }

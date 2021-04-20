@@ -9,9 +9,8 @@
 @code {
     public int currentEpoch { get; set; }
 
-    protected async override Task<List<TransactionsPerEpoch.Response>> OnInitializedAsync()
+    protected async override Task<List<TransactionsPerEpoch.TransactionsInEpoch>> OnInitializedAsync()
     {
-        var respone = _mediator.Send(new GetCurrentEpoch.Command());
-        return await _mediator.Send(new TransactionsPerEpoch.Command(10));
+        return await _mediator.Send(new TransactionsPerEpoch.UserEnteredEochCommand(10));
     }
 }

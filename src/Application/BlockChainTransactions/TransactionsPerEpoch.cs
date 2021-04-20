@@ -12,9 +12,9 @@ namespace Application.BlockChainTransactions
 {
     public static class TransactionsPerEpoch
     {
-        public record Command(int Epoch) : IRequest<List<Response>>;
+        public record UserEnteredEochCommand(int Epoch) : IRequest<List<TransactionsInEpoch>>;
 
-        public class Handler : IRequestHandler<Command, List<Response>>
+        public class Handler : IRequestHandler<UserEnteredEochCommand, List<TransactionsInEpoch>>
         {
             private readonly IQueries _context;
 
@@ -23,12 +23,12 @@ namespace Application.BlockChainTransactions
                 _context = context;
             }            
 
-            public async Task<List<Response>> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<List<TransactionsInEpoch>> Handle(UserEnteredEochCommand request, CancellationToken cancellationToken)
             {
                 return await _context.GetTransactionsPerEpochAsync(request.Epoch);
             }
         }
 
-        public record Response(long Id, int Size, byte[] Hash, decimal Fee ); 
+        public record TransactionsInEpoch(long Id, int Size, byte[] Hash, decimal Fee ); 
     }
 }

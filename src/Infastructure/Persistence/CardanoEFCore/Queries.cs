@@ -24,11 +24,11 @@ namespace Infastructure.Persistence
             return (int)_cardanoContext.Blocks.Where(s => s.EpochSlotNo == slotNumber).Select(s => s.BlockNo).FirstOrDefault();
         }
 
-        public async Task<List<Response>> GetTransactionsPerEpochAsync(int epoch)
+        public async Task<List<TransactionsInEpoch>> GetTransactionsPerEpochAsync(int epoch)
         {
 
             // TODO Rework the query
-            List<Response> returnList = new();
+            List<TransactionsInEpoch> returnList = new();
             long txCount = 0;
 
             var blocksInEpoch = await _cardanoContext.Blocks
@@ -40,7 +40,7 @@ namespace Infastructure.Persistence
             {
                 foreach (var tx in block.Txes) 
                 {
-                    returnList.Add(new Response(tx.Id, tx.Size, tx.Hash, tx.Fee));
+                    returnList.Add(new TransactionsInEpoch(tx.Id, tx.Size, tx.Hash, tx.Fee));
                     txCount += block.TxCount;
                 }
             }
