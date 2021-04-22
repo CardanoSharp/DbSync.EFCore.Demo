@@ -1,4 +1,5 @@
 ﻿@using Application.BlockChainTransactions;
+@using Application.EpochData; 
 @inject MediatR.IMediator _mediator
 
 
@@ -21,12 +22,18 @@
 
     private TransactionsPerEpochComponentViewModel data = new();
 
-    //protected override async Task OnAfterRenderAsync(bool firstRender)
-    //{
-    //    var transactionsInEpoch = await _mediator.Send(new TransactionsInCurrentEpoch.TransactionsInCurrentEpochCommand());
-    //    data.TransactionsInEpoch = transactionsInEpoch.Count();
-    //    StateHasChanged();
-    //}
+    protected override async Task OnInitializedAsync()
+    {
+        var transactionsInEpoch = await _mediator.Send(new TransactionsInCurrentEpoch.TransactionsInCurrentEpochCommand());
+        data.TransactionsInEpoch = transactionsInEpoch.Count();
+        Task<GetCurrentEpoch.GetCurrentEpochResponse> currentEpoch = _mediator.Send(new GetCurrentEpoch.GetCurrentEpochCommand());
+        await currentEpoch.ContinueWith(
+            s =>
+           {
+               data.UserEnteredEpoch = s.Result.CurrentEpoch;
+           });
+        StateHasChanged();
+    }
 
     private async void TransactionsInUserEnteredEpoch()
     {

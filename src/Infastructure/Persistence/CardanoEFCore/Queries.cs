@@ -27,18 +27,12 @@ namespace Infastructure.Persistence
         public async Task<GetCurrentEpochResponse> GetCurrentEpoch()
         {
             var currentEpoch = await _cardanoContext.Blocks
-                                 .OrderByDescending(s => s.EpochNo)
-                                 .FirstOrDefaultAsync();
+                                    .MaxAsync(s => s.EpochNo);
 
-            int confirmedEpochHasValue = 0;
+            var respone = new GetCurrentEpochResponse(currentEpoch.Value);
 
-            if (currentEpoch.EpochNo.HasValue)
-            {
-                confirmedEpochHasValue = currentEpoch.EpochNo.Value;
-            }
-            var response = new GetCurrentEpochResponse(confirmedEpochHasValue);
+            return respone; 
 
-            return response;
 
 
         }
