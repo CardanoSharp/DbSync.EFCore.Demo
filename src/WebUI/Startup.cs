@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using Application;
-using Infastructure; 
+using Infastructure;
 namespace WebUI
 {
     public class Startup

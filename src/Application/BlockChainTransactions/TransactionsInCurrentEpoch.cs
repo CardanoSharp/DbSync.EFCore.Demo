@@ -3,7 +3,8 @@ using MediatR;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using static Application.BlockChainTransactions.UserEnteredTransactionsPerEpoch;
+using static Application.BlockChainTransactions.TransactionsPerEpoch;
+using static Application.EpochData.GetCurrentEpoch;
 
 namespace Application.BlockChainTransactions
 {
@@ -13,15 +14,18 @@ namespace Application.BlockChainTransactions
         public class TransactionsInCurrentEpochHandler : IRequestHandler<TransactionsInCurrentEpochCommand, List<TransactionsInEpochResponse>>
         {
             private readonly IQueries _context;
+            private readonly IMediator _mediator;
 
-            public TransactionsInCurrentEpochHandler(IQueries context)
+            public TransactionsInCurrentEpochHandler(IQueries context, IMediator mediator)
             {
                 _context = context;
+                _mediator = mediator;
             }
 
             public async Task<List<TransactionsInEpochResponse>> Handle(TransactionsInCurrentEpochCommand request, CancellationToken cancellationToken)
             {
-                return await _context.GetTransactionsPerEpochAsync(4);
+                var currentEpoch = await _mediator.Send(new GetCurrentEpochCommand(), cancellationToken);
+                return await _context.GetTransactionsForUserEnteredEpoch(49); 
             }
         }
     }

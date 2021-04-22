@@ -10,7 +10,7 @@ using MediatR;
 
 namespace Application.BlockChainTransactions
 {
-    public static class UserEnteredTransactionsPerEpoch
+    public static class TransactionsPerEpoch
     {
         public record UserEnteredEochCommand(int Epoch) : IRequest<List<TransactionsInEpochResponse>>;
         public class UserEnteredTransactionsInEpochHandler : IRequestHandler<UserEnteredEochCommand, List<TransactionsInEpochResponse>>
@@ -24,7 +24,7 @@ namespace Application.BlockChainTransactions
 
             public async Task<List<TransactionsInEpochResponse>> Handle(UserEnteredEochCommand request, CancellationToken cancellationToken)
             {
-                return await _context.GetTransactionsPerEpochAsync(request.Epoch);
+                return await _context.GetTransactionsForUserEnteredEpoch(request.Epoch);
             }
         }
 
