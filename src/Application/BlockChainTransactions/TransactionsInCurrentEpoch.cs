@@ -25,7 +25,7 @@ namespace Application.BlockChainTransactions
             public async Task<List<TransactionsInEpochResponse>> Handle(TransactionsInCurrentEpochCommand request, CancellationToken cancellationToken)
             {
                 var currentEpoch = await _mediator.Send(new GetCurrentEpochCommand(), cancellationToken);
-                return await _context.GetTransactionsForUserEnteredEpoch(49); 
+                return await _context.GetTransactionsForUserEnteredEpoch(currentEpoch.CurrentEpoch); 
             }
         }
     }

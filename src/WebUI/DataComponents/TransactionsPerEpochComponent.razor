@@ -3,15 +3,35 @@
 
 
 <p>Transactions Per Epoch</p>
-<p> Transactions for Epoch: @TransactionsPageComponent</p>
+<p> Transactions for Epoch: @data.UserEnteredEpoch -> @data.TransactionsInEpoch</p> <p>Or enter your own Epoch:  </p>
+    
+<EditForm Model="data" OnValidSubmit="TransactionsInUserEnteredEpoch">
+        <InputNumber @bind-Value="data.UserEnteredEpoch" />
+        <button type="submit">Get Transactions In Epoch</button>
+    </EditForm>
 
 @code {
-    private int TransactionsPageComponent { get; set; }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    private class TransactionsPerEpochComponentViewModel
     {
-        var transactionsInEpoch = await _mediator.Send(new TransactionsInCurrentEpoch.TransactionsInCurrentEpochCommand());
-        TransactionsPageComponent = transactionsInEpoch.Count();
+        public int TransactionsInEpoch { get; set; }
+        public int UserEnteredEpoch { get; set; }
+
+    }
+
+    private TransactionsPerEpochComponentViewModel data = new();
+
+    //protected override async Task OnAfterRenderAsync(bool firstRender)
+    //{
+    //    var transactionsInEpoch = await _mediator.Send(new TransactionsInCurrentEpoch.TransactionsInCurrentEpochCommand());
+    //    data.TransactionsInEpoch = transactionsInEpoch.Count();
+    //    StateHasChanged();
+    //}
+
+    private async void TransactionsInUserEnteredEpoch()
+    {
+        var transactionsInEpoch = await _mediator.Send(new TransactionsPerEpoch.UserEnteredEochCommand(data.UserEnteredEpoch));
+        data.TransactionsInEpoch = transactionsInEpoch.Count();
         StateHasChanged();
     }
 
