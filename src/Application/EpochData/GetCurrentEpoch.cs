@@ -1,6 +1,7 @@
 ﻿using Application.Common.Interfaces;
 using AutoMapper;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,24 +13,42 @@ namespace Application.EpochData
 {
     public static class GetCurrentEpoch
     {
-        public record Command() : IRequest<Respone>;
-        public class Handler : IRequestHandler<Command, Respone>
+        public record GetCurrentEpochCommand() : IRequest<GetCurrentEpochResponse>;
+        public class GetCurrentEpochHandler : IRequestHandler<GetCurrentEpochCommand, GetCurrentEpochResponse>
         {
 
             private readonly IQueries _context;
+            private readonly ILogger _logger;
 
-            public Handler(IQueries context)
+            public GetCurrentEpochHandler(IQueries context, ILogger logger)
             {
                 _context = context;
-
+                _logger = logger;
             }
 
-            public async Task<Respone> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<GetCurrentEpochResponse> Handle(GetCurrentEpochCommand request, CancellationToken cancellationToken)
             {
-                return await _context.GetCurrentEpoch(); 
+                try
+                {
+                    var currentEpoch = await _context.GetCurrentEpoch();
+                    return currentEpoch;
+                }
+
+                catch(NullReferenceException e)
+                {
+                    _logger.LogWarning("The attempt to return the current Epoch returned null on {Time}. Error message {Message}", DateTime.UtcNow, e);
+                    throw;
+                }
+
+                catch(Exception e)
+                {
+                    _logger.LogError(e, "An unkown error occured when getting the current epoch on {Time}", DateTime.UtcNow);
+                    throw; 
+                }
+                 
             }
         }
 
-        public record Respone(int CurrentEpoch);
+        public record GetCurrentEpochResponse(int CurrentEpoch);
     }
 }

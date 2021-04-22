@@ -9,7 +9,7 @@
 @code {
     public int currentEpoch { get; set; }
 
-    protected async override Task<List<TransactionsPerEpoch.TransactionsInEpoch>> OnInitializedAsync()
+    protected async override Task<List<TransactionsPerEpoch.TransactionsInEpochResponse>> OnInitializedAsync()
     {
         return await _mediator.Send(new TransactionsPerEpoch.UserEnteredEochCommand(10));
     }
