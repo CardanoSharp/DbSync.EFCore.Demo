@@ -41,7 +41,7 @@
           "dependencies": {
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[5.0.2, )"
+              "version": "[5.0.5.1, )"
             }
           },
           "imports": [
@@ -262,7 +262,7 @@
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[5.0.2, )"
+              "version": "[5.0.5.1, )"
             }
           },
           "imports": [

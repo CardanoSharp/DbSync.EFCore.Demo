@@ -12,11 +12,16 @@
 
 <div class="card-body">
     <p> Transactions for Epoch: @data.UserEnteredEpoch -> @data.TransactionsInEpoch</p> <p>Or enter your own Epoch:  </p>
+    <form class="form-inline">
+        <div class="form-group">
+            <EditForm Model="data" OnValidSubmit="TransactionsInUserEnteredEpoch">
+                <InputNumber @bind-Value="data.UserEnteredEpoch" />
+                <button type="submit">Get Transactions In Epoch</button>
+            </EditForm>
 
-    <EditForm Model="data" OnValidSubmit="TransactionsInUserEnteredEpoch">
-        <InputNumber @bind-Value="data.UserEnteredEpoch" />
-        <button type="submit">Get Transactions In Epoch</button>
-    </EditForm>
+        </div>
+    </form>
+
 </div>
 
 <div class="card-footer">
