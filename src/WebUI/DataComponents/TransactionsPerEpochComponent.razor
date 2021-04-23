@@ -1,15 +1,25 @@
 ﻿@using Application.BlockChainTransactions;
-@using Application.EpochData; 
+@using Application.EpochData;
+@using System.Diagnostics;
 @inject MediatR.IMediator _mediator
 
+<div class="card-header">
+    <p>Transactions Per Epoch</p>
+</div>
 
-<p>Transactions Per Epoch</p>
-<p> Transactions for Epoch: @data.UserEnteredEpoch -> @data.TransactionsInEpoch</p> <p>Or enter your own Epoch:  </p>
-    
-<EditForm Model="data" OnValidSubmit="TransactionsInUserEnteredEpoch">
+<div class="card-body">
+    <p> Transactions for Epoch: @data.UserEnteredEpoch -> @data.TransactionsInEpoch</p> <p>Or enter your own Epoch:  </p>
+
+    <EditForm Model="data" OnValidSubmit="TransactionsInUserEnteredEpoch">
         <InputNumber @bind-Value="data.UserEnteredEpoch" />
         <button type="submit">Get Transactions In Epoch</button>
     </EditForm>
+</div>
+
+<div class="card-footer">
+    <p>Elapsed time to get results: @data.ElapsedTime</p>
+</div>
+
 
 @code {
 
@@ -17,6 +27,7 @@
     {
         public int TransactionsInEpoch { get; set; }
         public int UserEnteredEpoch { get; set; }
+        public string ElapsedTime { get; set; }
 
     }
 
@@ -24,21 +35,30 @@
 
     protected override async Task OnInitializedAsync()
     {
+
+        Stopwatch stopWatch = new Stopwatch();
+        stopWatch.Start();
         var transactionsInEpoch = await _mediator.Send(new TransactionsInCurrentEpoch.TransactionsInCurrentEpochCommand());
         data.TransactionsInEpoch = transactionsInEpoch.Count();
         Task<GetCurrentEpoch.GetCurrentEpochResponse> currentEpoch = _mediator.Send(new GetCurrentEpoch.GetCurrentEpochCommand());
         await currentEpoch.ContinueWith(
             s =>
-           {
-               data.UserEnteredEpoch = s.Result.CurrentEpoch;
-           });
+            {
+                data.UserEnteredEpoch = s.Result.CurrentEpoch;
+            });
+        TimeSpan result = stopWatch.Elapsed;
+        data.ElapsedTime = String.Format("{0} seconds and {1} miliseconds", result.Seconds, result.Milliseconds);
         StateHasChanged();
     }
 
     private async void TransactionsInUserEnteredEpoch()
     {
+        Stopwatch stopWatch = new Stopwatch();
+        stopWatch.Start();
         var transactionsInEpoch = await _mediator.Send(new TransactionsPerEpoch.UserEnteredEochCommand(data.UserEnteredEpoch));
         data.TransactionsInEpoch = transactionsInEpoch.Count();
+        TimeSpan result = stopWatch.Elapsed;
+        data.ElapsedTime = String.Format("{0} seconds and {1} miliseconds", result.Seconds, result.Milliseconds);
         StateHasChanged();
     }
 
