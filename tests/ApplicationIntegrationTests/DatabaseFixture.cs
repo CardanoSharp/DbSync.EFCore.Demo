@@ -51,6 +51,7 @@ namespace ApplicationIntegrationTests
             Assert.True(firstBlock.EpochNo is 1); 
         }
 
+
         public async void Dispose()
         {
             await cardanoContext.DisposeAsync();

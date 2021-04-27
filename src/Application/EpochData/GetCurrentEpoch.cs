@@ -26,8 +26,7 @@ namespace Application.EpochData
             {
                 try
                 {
-                    var currentEpoch = await _context.GetCurrentEpoch();
-                    return currentEpoch;
+                    return await _context.GetCurrentEpoch();
                 }
 
                 catch(NullReferenceException e)
