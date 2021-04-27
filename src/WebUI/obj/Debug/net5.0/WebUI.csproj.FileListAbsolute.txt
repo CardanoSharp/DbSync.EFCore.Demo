@@ -58,7 +58,6 @@ C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.RazorAssemblyInfo.
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\staticwebassets\WebUI.StaticWebAssets.Manifest.cache
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\staticwebassets\WebUI.StaticWebAssets.xml
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
-C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\scopedcss\bundle\WebUI.styles.css
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\scopedcss\projectbundle\WebUI.bundle.scp.css
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.RazorTargetAssemblyInfo.cache

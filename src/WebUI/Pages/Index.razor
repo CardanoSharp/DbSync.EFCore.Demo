@@ -3,41 +3,9 @@
 @using Application.EpochData;
 @using WebUI.DataComponents;
 
-
-<div class="header">
-    <div class="inner-header flex">
-        <h1>Welcome to the Cardano Sharp <br /> EF Core Demo </h1>
-        <div class="card border-dark mb-3"><TransactionsPerEpochComponent></TransactionsPerEpochComponent></div>
-
-
-    </div>
-
-    <!--Waves Container-->
-    <div>
-        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-            <defs>
-                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-            </defs>
-            <g class="parallax">
-                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
-            </g>
-        </svg>
-    </div>
-    <!--Waves end-->
-
-</div>
-<!--Header ends-->
-<!--Content starts-->
-<div class="content flex">
-    <p>Cardano Sharp | 2021 | Free to use</p>
-    @*Credit to >Daniel Österman on Code Pen for the CSS design*@
-</div>
-
-<!--Content ends-->
+<h1 class="display-1">Cardano Sharp <br /> Demo </h1>
+<h3> Your complete guide to utilizing the Cardano Sharp Library</h3>
+<TransactionsPerEpochComponent></TransactionsPerEpochComponent>
 
 @code{
 }

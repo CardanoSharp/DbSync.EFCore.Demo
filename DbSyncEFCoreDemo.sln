@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infastructure", "src\Infast
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardanoSharp.DbSync.EFCore", "cardanosharp-dbsync-efcore-main\cardanosharp-dbsync-efcore-main\CardanoSharp.DbSync.EFCore.csproj", "{FA0BF01E-33A7-49FC-9864-2072565A6093}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationIntegrationTests", "tests\ApplicationIntegrationTests\ApplicationIntegrationTests.csproj", "{7A4B81D0-3CA7-4991-B385-9A50E0C7E2CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationIntegrationTests", "tests\ApplicationIntegrationTests\ApplicationIntegrationTests.csproj", "{7A4B81D0-3CA7-4991-B385-9A50E0C7E2CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationUnitTests", "tests\ApplicationUnitTests\ApplicationUnitTests.csproj", "{E3AF739E-C823-4D32-BAB6-034D7827E9D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationUnitTests", "tests\ApplicationUnitTests\ApplicationUnitTests.csproj", "{E3AF739E-C823-4D32-BAB6-034D7827E9D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

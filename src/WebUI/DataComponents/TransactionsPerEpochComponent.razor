@@ -2,32 +2,32 @@
 @using Application.EpochData;
 @using System.Diagnostics;
 @inject MediatR.IMediator _mediator
-
-<div class="card-header">
-    <div class="display-4">
-        <p>Transactions Per Epoch</p>
-    </div>
-
-</div>
-
-<div class="card-body">
-    <p> Transactions for Epoch: @data.UserEnteredEpoch -> @data.TransactionsInEpoch</p> <p>Or enter your own Epoch:  </p>
-    <form class="form-inline">
-        <div class="form-group">
-            <EditForm Model="data" OnValidSubmit="TransactionsInUserEnteredEpoch">
-                <InputNumber @bind-Value="data.UserEnteredEpoch" />
-                <button type="submit">Get Transactions In Epoch</button>
-            </EditForm>
+    <div class="card">
+        <div class="card-header">
+            <div class="display-4">
+                <p>Transactions Per Epoch</p>
+            </div>
 
         </div>
-    </form>
 
-</div>
+        <div class="card-body">
+            <p> Transactions for Epoch: @data.UserEnteredEpoch -> @data.TransactionsInEpoch</p> <p>Or enter your own Epoch:  </p>
+            <form class="form-inline">
+                <div class="form-group">
+                    <EditForm Model="data" OnValidSubmit="TransactionsInUserEnteredEpoch">
+                        <InputNumber @bind-Value="data.UserEnteredEpoch" />
+                        <button type="submit">Get Transactions In Epoch</button>
+                    </EditForm>
 
-<div class="card-footer">
-    <p>Elapsed time to get results: @data.ElapsedTime</p>
-</div>
+                </div>
+            </form>
 
+        </div>
+
+        <div class="card-footer">
+            <p>Elapsed time to get results: @data.ElapsedTime</p>
+        </div>
+    </div>
 
 @code {
 
