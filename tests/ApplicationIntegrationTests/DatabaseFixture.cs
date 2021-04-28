@@ -16,10 +16,9 @@ namespace ApplicationIntegrationTests
 {
     public class DatabaseFixture : IDisposable
     {
-        private readonly CardanoContext cardanoContext;
-        private static readonly IConfiguration _configuration;
+        private readonly CardanoContext _cardanoContext;
 
- 
+
         public DatabaseFixture()
         {
             var builder = new ConfigurationBuilder()
@@ -29,7 +28,7 @@ namespace ApplicationIntegrationTests
                       .UseInMemoryDatabase(databaseName: "Cardano")
                       .Options;
 
-            cardanoContext = new CardanoContext(options, builder);
+            _cardanoContext = new CardanoContext(options, builder);
         }
 
         [Fact]
@@ -41,20 +40,25 @@ namespace ApplicationIntegrationTests
                 EpochNo = 1
             };
 
-            cardanoContext.Blocks.Add(block);
-            await cardanoContext.SaveChangesAsync();
+            _cardanoContext.Blocks.Add(block);
+            await _cardanoContext.SaveChangesAsync();
 
             //act
-            var firstBlock = await cardanoContext.Blocks.FirstOrDefaultAsync();
+            var firstBlock = await _cardanoContext.Blocks.FirstOrDefaultAsync();
 
             //assert
-            Assert.True(firstBlock.EpochNo is 1); 
+            Assert.True(firstBlock.EpochNo is 1);
+        }
+
+        public  CardanoContext GetDbContextOptionsBuilder()
+        {
+            return _cardanoContext;
         }
 
 
         public async void Dispose()
         {
-            await cardanoContext.DisposeAsync();
+            await _cardanoContext.DisposeAsync();
         }
     }
 }
