@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Application.Common.Interfaces;
 using AutoMapper;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace Application.BlockChainTransactions
 {
@@ -16,15 +17,20 @@ namespace Application.BlockChainTransactions
         public class UserEnteredTransactionsInEpochHandler : IRequestHandler<UserEnteredEochCommand, List<TransactionsInEpochResponse>>
         {
             private readonly IQueries _context;
+            private readonly ILogger _logger;
 
-            public UserEnteredTransactionsInEpochHandler(IQueries context)
+            public UserEnteredTransactionsInEpochHandler(IQueries context, ILogger logger)
             {
                 _context = context;
+                _logger = logger;
             }
 
             public async Task<List<TransactionsInEpochResponse>> Handle(UserEnteredEochCommand request, CancellationToken cancellationToken)
             {
-                return await _context.GetTransactionsForUserEnteredEpoch(request.Epoch);
+                var transactions = await _context.GetTransactionsForUserEnteredEpoch(request.Epoch);
+                _logger.LogInformation("The user asked for the transactions in Epoch {request} and the system returned {transactions} transactions at {time}", request.Epoch, transactions, DateTime.UtcNow);
+                return transactions;
+
             }
         }
 

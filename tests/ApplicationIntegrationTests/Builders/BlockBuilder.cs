@@ -17,7 +17,7 @@ namespace ApplicationIntegrationTests.Builders
         public static void GenerateBlocks(int numberOfBlocks, CardanoContext cardanoContext)
         {
 
-            for (int i = 0; i < numberOfBlocks; i++)
+            for (int i = 1; i <= numberOfBlocks; i++)
             {
                 var block = new Block
                 {
@@ -25,9 +25,10 @@ namespace ApplicationIntegrationTests.Builders
                     TxCount = (long)i * 5,
                 };
                 cardanoContext.Add(block);
+                cardanoContext.SaveChangesAsync();
 
             }
-            cardanoContext.SaveChangesAsync();
+            
         }
 
     }

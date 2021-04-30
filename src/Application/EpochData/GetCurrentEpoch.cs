@@ -14,9 +14,9 @@ namespace Application.EpochData
         {
 
             private readonly IQueries _context;
-            private readonly ILogger<GetCurrentEpochResponse> _logger;
+            private readonly ILogger _logger;
 
-            public GetCurrentEpochHandler(IQueries context, ILogger<GetCurrentEpochResponse> logger)
+            public GetCurrentEpochHandler(IQueries context, ILogger logger)
             {
                 _context = context;
                 _logger = logger;

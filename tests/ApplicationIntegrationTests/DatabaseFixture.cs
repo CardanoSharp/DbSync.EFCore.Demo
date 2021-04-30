@@ -37,59 +37,48 @@ namespace ApplicationIntegrationTests
         public async Task FirstTimeSetUp()
         {
             //arrange
-            var block = new Block()
-            {
-                EpochNo = 1
-            };
+            BlockBuilder.GenerateBlocks(30, _cardanoContext);
 
-            _cardanoContext.Blocks.Add(block);
-            await _cardanoContext.SaveChangesAsync();
 
             //act
             var firstBlock = await _cardanoContext.Blocks.FirstOrDefaultAsync();
 
             //assert
             Assert.True(firstBlock.EpochNo is 1);
-            _cardanoContext.Database.EnsureDeleted();
+            
         }
 
-        [Theory]
-        [InlineData(10)]
-        [InlineData(5)]
-        [InlineData(20)]
-        public async void GetCurrentEpochTest(int expected)
+        [Fact]
+        public async void GetCurrentEpochTest()
         {
-            BlockBuilder.GenerateBlocks(expected, _cardanoContext);
+            BlockBuilder.GenerateBlocks(30, _cardanoContext);
+
 
             var currentEpoch = await _cardanoContext.Blocks
                         .MaxAsync(s => s.EpochNo);
 
-            Assert.Equal(expected, currentEpoch.Value + 1);
+            Assert.Equal(30, currentEpoch.Value);
             
-            _cardanoContext.Database.EnsureDeleted();
+ 
         }
-
+        
         [Theory]
-        [InlineData(10)]
         [InlineData(5)]
         [InlineData(20)]
         public async void GetTransactionsInEpochTest(int expected)
         {
-            BlockBuilder.GenerateBlocks(expected, _cardanoContext);
+            BlockBuilder.GenerateBlocks(30, _cardanoContext);
 
             var txCount = await _cardanoContext.Blocks
-                .Where(x => x.EpochNo == expected)
-                .Include(x => x.TxCount)
-                .ToListAsync(); 
+                .Where(x => x.EpochNo == expected - 1).FirstOrDefaultAsync(); 
+            
+            Assert.Equal(expected * 5, txCount.TxCount + 5);
 
-            Assert.Equal((long)expected * 5, txCount.Count());
-
-            _cardanoContext.Database.EnsureDeleted();
         }
 
-        public async void Dispose()
+        public void Dispose()
         {
-            await _cardanoContext.DisposeAsync();
+            _cardanoContext.Dispose(); 
         }
     }
 }
