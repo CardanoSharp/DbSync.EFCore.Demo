@@ -11,6 +11,8 @@ using System.IO;
 using WebUI;
 using Xunit;
 using System.Threading.Tasks;
+using ApplicationIntegrationTests.Builders;
+using System.Linq;
 
 namespace ApplicationIntegrationTests
 {
@@ -48,13 +50,42 @@ namespace ApplicationIntegrationTests
 
             //assert
             Assert.True(firstBlock.EpochNo is 1);
+            _cardanoContext.Database.EnsureDeleted();
         }
 
-        public  CardanoContext GetDbContextOptionsBuilder()
+        [Theory]
+        [InlineData(10)]
+        [InlineData(5)]
+        [InlineData(20)]
+        public async void GetCurrentEpochTest(int expected)
         {
-            return _cardanoContext;
+            BlockBuilder.GenerateBlocks(expected, _cardanoContext);
+
+            var currentEpoch = await _cardanoContext.Blocks
+                        .MaxAsync(s => s.EpochNo);
+
+            Assert.Equal(expected, currentEpoch.Value + 1);
+            
+            _cardanoContext.Database.EnsureDeleted();
         }
 
+        [Theory]
+        [InlineData(10)]
+        [InlineData(5)]
+        [InlineData(20)]
+        public async void GetTransactionsInEpochTest(int expected)
+        {
+            BlockBuilder.GenerateBlocks(expected, _cardanoContext);
+
+            var txCount = await _cardanoContext.Blocks
+                .Where(x => x.EpochNo == expected)
+                .Include(x => x.TxCount)
+                .ToListAsync(); 
+
+            Assert.Equal((long)expected * 5, txCount.Count());
+
+            _cardanoContext.Database.EnsureDeleted();
+        }
 
         public async void Dispose()
         {

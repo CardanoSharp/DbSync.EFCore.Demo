@@ -28,13 +28,9 @@ namespace Infastructure.Persistence
         {
             var currentEpoch = await _cardanoContext.Blocks
                                     .MaxAsync(s => s.EpochNo);
-
-            var respone = new GetCurrentEpochResponse(currentEpoch.Value);
-
-            return respone; 
-
-
-
+            
+            return new GetCurrentEpochResponse(currentEpoch.Value);
+ 
         }
 
         public async Task<List<TransactionsInEpochResponse>> GetTransactionsForUserEnteredEpoch(int epoch)
