@@ -17,9 +17,9 @@ namespace Application.BlockChainTransactions
         {
             private readonly IQueries _context;
             private readonly IMediator _mediator;
-            private readonly ILogger _logger;
+            private readonly ILogger<TransactionsInEpochResponse> _logger;
 
-            public TransactionsInCurrentEpochHandler(IQueries context, IMediator mediator, ILogger logger)
+            public TransactionsInCurrentEpochHandler(IQueries context, IMediator mediator, ILogger<TransactionsInEpochResponse> logger)
             {
                 _context = context;
                 _mediator = mediator;

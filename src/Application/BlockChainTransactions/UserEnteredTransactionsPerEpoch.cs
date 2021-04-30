@@ -17,9 +17,9 @@ namespace Application.BlockChainTransactions
         public class UserEnteredTransactionsInEpochHandler : IRequestHandler<UserEnteredEochCommand, List<TransactionsInEpochResponse>>
         {
             private readonly IQueries _context;
-            private readonly ILogger _logger;
+            private readonly ILogger<TransactionsInEpochResponse> _logger;
 
-            public UserEnteredTransactionsInEpochHandler(IQueries context, ILogger logger)
+            public UserEnteredTransactionsInEpochHandler(IQueries context, ILogger<TransactionsInEpochResponse> logger)
             {
                 _context = context;
                 _logger = logger;
