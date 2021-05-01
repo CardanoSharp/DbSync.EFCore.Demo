@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XlfVFgZ/bSKtl2T77Wz8xeU1gBIMaZ7FnKY3Ho0L0k8o4qlBQyLNNzoi7mY/LTRFoSkPsV3+fD3UqnvsNUB60w==",
+  "dgSpecHash": "E4A30J6CIFmsu8wRlM6lpGSuwnRvYKrzcpuFUymMjqoi5EYBOpT6cCSipTzAL6j//vCEEUA7yPJkW/YpyHqXbA==",
   "success": true,
   "projectFilePath": "C:\\Github\\DbSync.EFCore.Demo\\tests\\ApplicationUnitTests\\ApplicationUnitTests.csproj",
   "expectedPackageFiles": [],
