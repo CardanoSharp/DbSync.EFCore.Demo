@@ -10,7 +10,7 @@ namespace Application.BlockchainTransactions
 {
     public static class GetTransactionInformation
     {
-        public record GetTransactionDataCommand(string identifier) : IRequest<GetTransactionDataResponse>;
+        public record GetTransactionDataCommand(string Identifier) : IRequest<GetTransactionDataResponse>;
 
         public class GetTransactionDataHandler : IRequestHandler<GetTransactionDataCommand, GetTransactionDataResponse>
         {

@@ -15,9 +15,9 @@ namespace ApplicationIntegrationTests.Builders
 
             for (int i = 1; i <= numberOfBlocks; i++)
             {
-                var block = new Tx
+                var transaction = new Tx
                 {
-                    Hash = i,
+                    Hash = BitConverter.GetBytes(i),
                     Block = new Block
                     {
                         SlotNo = i + 1,
@@ -27,9 +27,22 @@ namespace ApplicationIntegrationTests.Builders
                     },
                     Fee = i + 3,
                     OutSum = i + 4,
-                    TxOut
+                    TxOuts = new List<TxOut>(),
+                    TxMetadata = new List<TxMetadatum>(),
                 };
-                cardanoContext.Add(block);
+
+                transaction.TxMetadata.Add(new TxMetadatum
+                {
+                    Json = "Hello There Friends at index : " + i.ToString(),
+                });
+
+                transaction.TxOuts.Add(new TxOut
+                {
+                    Address = "Hi" + i.ToString(),
+
+                });
+
+                cardanoContext.Add(transaction);
                 cardanoContext.SaveChangesAsync();
 
             }
@@ -38,4 +51,4 @@ namespace ApplicationIntegrationTests.Builders
 
     }
 }
-}
+
