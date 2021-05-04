@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ApplicationIntegrationTests.Builders
 {
-    public class BlockBuilder
+    public static class BlockBuilder
     {
         public static void GenerateBlocks(int numberOfBlocks, CardanoContext cardanoContext)
         {
