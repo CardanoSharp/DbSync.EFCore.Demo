@@ -10,10 +10,10 @@ namespace ApplicationIntegrationTests.Builders
 {
     public static class TransactionBuilder
     {
-        public static void GenerateBlocks(int numberOfBlocks, CardanoContext cardanoContext)
+        public static void GenerateBlocks(int numberOfTransactions, CardanoContext cardanoContext)
         {
 
-            for (int i = 1; i <= numberOfBlocks; i++)
+            for (int i = 1; i <= numberOfTransactions; i++)
             {
                 var transaction = new Tx
                 {
