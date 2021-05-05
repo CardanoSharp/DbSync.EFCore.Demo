@@ -58,9 +58,5 @@ namespace CardanoSharp.DbSync.EntityFramework.Models
         public virtual ICollection<TxOut> TxOuts { get; set; }
         public virtual ICollection<Withdrawal> Withdrawals { get; set; }
 
-        public static implicit operator Tx(Tx v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -27,20 +27,36 @@ namespace ApplicationIntegrationTests.Builders
                     },
                     Fee = i + 3,
                     OutSum = i + 4,
-                    TxOuts = new List<TxOut>(),
-                    TxMetadata = new List<TxMetadatum>(),
+                    TxOuts = new List<TxOut>() {
+                        new TxOut
+                        {
+                            Address = "TxOutAddress" + i.ToString()
+                        }
+                    },
+
+                    TxMetadata = new List<TxMetadatum>() {
+                        new TxMetadatum {
+                            Json = "Hello There Friends From index : " + i.ToString(),
+                        }
+                    },
+
+                    TxInTxInNavigations = new List<TxIn>()
+                    {
+                        new TxIn
+                        {
+                            TxOut = new Tx
+                            {
+                                TxOuts = new List<TxOut>()
+                                { 
+                                    new TxOut{Address = "TxInAddress" + i.ToString()}
+                                          
+                                },
+                            },
+
+                         }
+                    },
+
                 };
-
-                transaction.TxMetadata.Add(new TxMetadatum
-                {
-                    Json = "Hello There Friends at index : " + i.ToString(),
-                });
-
-                transaction.TxOuts.Add(new TxOut
-                {
-                    Address = "Hi" + i.ToString(),
-
-                });
 
                 cardanoContext.Add(transaction);
                 cardanoContext.SaveChangesAsync();
