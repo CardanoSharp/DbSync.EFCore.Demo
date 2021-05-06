@@ -10,7 +10,7 @@ namespace ApplicationIntegrationTests.Builders
 {
     public static class TransactionBuilder
     {
-        public static void GenerateBlocks(int numberOfTransactions, CardanoContext cardanoContext)
+        public static void GenerateTransactions(int numberOfTransactions, CardanoContext cardanoContext)
         {
 
             for (int i = 1; i <= numberOfTransactions; i++)
@@ -46,11 +46,13 @@ namespace ApplicationIntegrationTests.Builders
                         {
                             TxOut = new Tx
                             {
-                                TxOuts = new List<TxOut>()
-                                { 
-                                    new TxOut{Address = "TxInAddress" + i.ToString()}
-                                          
-                                },
+                                TxOuts = new List<TxOut> 
+                                {
+                                    new TxOut 
+                                    {
+                                        Address = "TxInAddress" + i.ToString()
+                                    }
+                                }
                             },
 
                          }

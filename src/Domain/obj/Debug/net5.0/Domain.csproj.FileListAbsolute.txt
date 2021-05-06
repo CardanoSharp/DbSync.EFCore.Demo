@@ -9,3 +9,4 @@ C:\Github\DbSync.EFCore.Demo\src\Domain\obj\Debug\net5.0\Domain.csproj.CoreCompi
 C:\Github\DbSync.EFCore.Demo\src\Domain\obj\Debug\net5.0\Domain.dll
 C:\Github\DbSync.EFCore.Demo\src\Domain\obj\Debug\net5.0\ref\Domain.dll
 C:\Github\DbSync.EFCore.Demo\src\Domain\obj\Debug\net5.0\Domain.pdb
+C:\Github\DbSync.EFCore.Demo\src\Domain\obj\Debug\net5.0\Domain.csprojAssemblyReference.cache
