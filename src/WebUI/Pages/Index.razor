@@ -1,6 +1,11 @@
 ﻿@page "/"
+@inject MediatR.IMediator _mediator
+@using Application.EpochData;
+@using WebUI.DataComponents;
 
-<h1>Welcome to the Cardano Sharp EF Core Demo</h1>
+<h1 class="display-1">Cardano Sharp <br /> Demo </h1>
+<h3> Your complete guide to utilizing the Cardano Sharp Library</h3>
+<TransactionsPerEpochComponent></TransactionsPerEpochComponent>
 
-This will guide you through how to use Cardano Sharp and its uses. 
-
+@code{
+}
