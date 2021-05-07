@@ -72,3 +72,5 @@ C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.pdb
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\WebUI.genruntimeconfig.cache
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\DataComponents\BlockExplorer.razor.g.cs
 C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\DataComponents\BlockExplorer.razor.g.cs
+C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\RazorDeclaration\Pages\Wallet Demo.razor.g.cs
+C:\Github\DbSync.EFCore.Demo\src\WebUI\obj\Debug\net5.0\Razor\Pages\Wallet Demo.razor.g.cs

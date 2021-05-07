@@ -5,16 +5,16 @@
 <div class="card">
 
     <div class="card-header">
-        Transactions Per Epoch
+        <h5>Transactions Per Epoch</h5>
     </div>
 
     <div class="card-body">
         <ul class="lisg-group list-group-flush">
-            <li class="list-group-item">Epoch @data.UserEnteredEpoch</li>
-            <li class="list-group-item">Transactions:  @data.TransactionsInEpoch</li>
+            <li class="list-group-item"><h5>Epoch @data.UserEnteredEpoch</h5></li>
+            <li class="list-group-item"><h5>Epoch @data.TransactionsInEpoch</h5></li>
             <li class="list-group-item">
                 <div class="form-group">
-                    <p>Or enter your own Epoch: </p>
+                    <h5>Or enter your own Epoch: </h5>
                     <EditForm Model="data" OnValidSubmit="TransactionsInUserEnteredEpoch">
                         <InputNumber @bind-Value="data.UserEnteredEpoch" />
                         <button type="submit">Get Transactions In Epoch</button>
@@ -27,7 +27,7 @@
     </div>
 
     <div class="card-footer">
-        <p>Elapsed time to get results: @data.ElapsedTime</p>
+        <h5>Elapsed time to get results: @data.ElapsedTime</h5>
     </div>
 </div>
 

@@ -127,3 +127,10 @@ p {
     box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
     color: whitesmoke;
 }
+
+h5 {
+    font-family: 'Lato', sans-serif;
+    text-align: left;
+    letter-spacing: 2px;
+    color: whitesmoke;
+}
