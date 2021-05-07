@@ -13,6 +13,7 @@ using Xunit;
 using System.Threading.Tasks;
 using ApplicationIntegrationTests.Builders;
 using System.Linq;
+using System.Text;
 
 namespace ApplicationIntegrationTests
 {
@@ -77,14 +78,15 @@ namespace ApplicationIntegrationTests
         }
 
         [Theory]
-        [InlineData(1)]
-        [InlineData(5)]
-        [InlineData(10)]
-        public async void GetTransactionDetailsTest(int iD)
+        [InlineData("1")]
+        [InlineData("5")]
+        [InlineData("10")]
+        public async void GetTransactionDetailsTest(string iD)
         {
             TransactionBuilder.GenerateTransactions(10, _cardanoContext);
 
-            var transactionDetails = await _cardanoContext.Txes.Where(s => s.Hash == BitConverter.GetBytes(iD))
+
+            var transactionDetails = await _cardanoContext.Txes.Where(s => BitConverter.ToString(s.Hash).ToLower().Replace("-", "") == iD)
                                             .Include(s => s.Block)
                                             .Include(s => s.TxOuts)
                                             .Include(s => s.TxMetadata)
@@ -93,11 +95,11 @@ namespace ApplicationIntegrationTests
                                             .ThenInclude(s => s.TxOuts)
                                             .FirstOrDefaultAsync();
 
-            Assert.Equal(BitConverter.GetBytes(iD), transactionDetails.Hash);
-            Assert.Equal(iD + 1, transactionDetails.Block.SlotNo);
-            Assert.Equal(iD + 2, transactionDetails.Block.EpochNo);
-            Assert.Equal(iD + 3, transactionDetails.Fee);
-            Assert.Equal(iD + 4, transactionDetails.OutSum);
+            Assert.Equal(Encoding.ASCII.GetBytes(iD), transactionDetails.Hash);
+            Assert.Equal(Int32.Parse(iD) + 1, transactionDetails.Block.SlotNo);
+            Assert.Equal(Int32.Parse(iD) + 2, transactionDetails.Block.EpochNo);
+            Assert.Equal(Int32.Parse(iD) + 3, transactionDetails.Fee);
+            Assert.Equal(Int32.Parse(iD) + 4, transactionDetails.OutSum);
             Assert.Equal("TxOutAddress" + iD.ToString(), transactionDetails.TxOuts.Select(s => s.Address).FirstOrDefault());
             Assert.Equal("Hello There Friends From index : " + iD.ToString(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
             //Assert.Equal("TxOutAddress" + iD.ToString(), transactionDetails.TxInTxInNavigations.Select(s => s.TxOut.TxOuts.Select(s => s.Address)).FirstOrDefault().ToString()); 

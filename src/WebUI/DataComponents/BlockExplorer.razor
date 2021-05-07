@@ -1,0 +1,21 @@
+﻿@using System.Diagnostics;
+@using Application.BlockchainTransactions;
+@inject MediatR.IMediator _mediator
+<h3>BlockExplorer</h3>
+
+@code {
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        Stopwatch stopWatch = new Stopwatch();
+        stopWatch.Start();
+        string ElapsedTime;
+        string id = "340";
+        var transactionsInEpoch = await _mediator.Send(new GetTransactionInformation.GetTransactionDataCommand(id));
+        TimeSpan result = stopWatch.Elapsed;
+        ElapsedTime = String.Format("{0} seconds and {1} miliseconds", result.Seconds, result.Milliseconds);
+        StateHasChanged();
+    }
+
+}

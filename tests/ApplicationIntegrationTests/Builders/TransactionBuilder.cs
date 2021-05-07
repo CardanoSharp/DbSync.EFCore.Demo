@@ -17,7 +17,7 @@ namespace ApplicationIntegrationTests.Builders
             {
                 var transaction = new Tx
                 {
-                    Hash = BitConverter.GetBytes(i),
+                    Hash = Encoding.ASCII.GetBytes(i.ToString()),
                     Block = new Block
                     {
                         SlotNo = i + 1,

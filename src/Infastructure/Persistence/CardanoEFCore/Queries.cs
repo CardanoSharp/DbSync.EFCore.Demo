@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using static Application.EpochData.GetCurrentEpoch;
 using static Application.BlockChainTransactions.TransactionsPerEpoch;
+using static Application.BlockchainTransactions.GetTransactionInformation;
 
 namespace Infastructure.Persistence
 {
@@ -53,6 +54,21 @@ namespace Infastructure.Persistence
             }
 
             return returnList;
+        }
+
+        public async Task<GetTransactionDataResponse> GetTransactionDataDetails(string id)
+        {
+            var transactionDetails = await _cardanoContext.Txes.Where(s => s.Id == Convert.ToInt32(id))
+                                .Include(s => s.Block)
+                                .Include(s => s.TxOuts)
+                                .Include(s => s.TxMetadata)
+                                .Include(s => s.TxInTxInNavigations)
+                                .ThenInclude(s => s.TxOut)
+                                .ThenInclude(s => s.TxOuts)
+                                .FirstOrDefaultAsync();
+
+            return new GetTransactionDataResponse(transactionDetails.Hash.ToString(), transactionDetails.Block.SlotNo.Value, transactionDetails.Block.EpochNo.Value,
+                                                  transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, null, transactionDetails.TxOuts.Select(s => s.Address).ToList(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
         }
 
     }

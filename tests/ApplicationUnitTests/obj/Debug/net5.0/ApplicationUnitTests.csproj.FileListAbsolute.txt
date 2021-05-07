@@ -97,4 +97,3 @@ C:\Github\DbSync.EFCore.Demo\tests\ApplicationUnitTests\obj\Debug\net5.0\Applica
 C:\Github\DbSync.EFCore.Demo\tests\ApplicationUnitTests\obj\Debug\net5.0\ref\ApplicationUnitTests.dll
 C:\Github\DbSync.EFCore.Demo\tests\ApplicationUnitTests\obj\Debug\net5.0\ApplicationUnitTests.pdb
 C:\Github\DbSync.EFCore.Demo\tests\ApplicationUnitTests\obj\Debug\net5.0\ApplicationUnitTests.genruntimeconfig.cache
-C:\Github\DbSync.EFCore.Demo\tests\ApplicationUnitTests\obj\Debug\net5.0\ApplicationUnitTests.csprojAssemblyReference.cache
