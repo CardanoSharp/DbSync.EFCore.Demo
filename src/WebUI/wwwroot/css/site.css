@@ -67,28 +67,28 @@ h1 {
     text-align: center;
     letter-spacing: 2px;
     font-size: 48px;
-    color: white;
+    color: whitesmoke;
 }
 
 h3 {
     font-family: 'Lato', sans-serif;
     text-align: center;
     letter-spacing: 2px;
-    color: white;
+    color: whitesmoke;
 }
 
 p {
     font-family: 'Lato', sans-serif;
     letter-spacing: 1px;
     font-size: 14px;
-    color: white;
+    color: whitesmoke;
 }
 
 .header {
     position: relative;
     text-align: center;
     background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
-    color: white;
+    color: whitesmoke;
 }
 
 .logo {
@@ -111,4 +111,19 @@ p {
     background-color: rgba(0,0,0,0.2);
     transition: 0.3s;
     box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
+}
+
+.list-group-item {
+    background-color: rgba(0,0,0,0.2);
+    transition: 0.3s;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
+    color: whitesmoke; 
+}
+
+.card-header {
+    padding-left: 20px;
+    background-color: rgba(0,0,0,0.2);
+    transition: 0.3s;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
+    color: whitesmoke;
 }
