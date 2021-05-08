@@ -14,7 +14,7 @@ namespace Application.BlockchainTransactions
     {
         public record GetTransactionDataFromHashCommand(string Identifier) : IRequest<GetTransactionDataResponse>;
 
-        public record GetTransactionDataFromIdCommand(int Id) : IRequest<GetTransactionDataResponse>;
+        public record GetTransactionDataFromIdCommand(long Id) : IRequest<GetTransactionDataResponse>;
 
         public class GetTransactionDataFromIdHandler : IRequestHandler<GetTransactionDataFromIdCommand, GetTransactionDataResponse>
         {

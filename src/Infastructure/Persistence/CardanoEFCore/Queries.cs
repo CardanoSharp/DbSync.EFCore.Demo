@@ -73,7 +73,7 @@ namespace Infastructure.Persistence
                                                   transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, null, transactionDetails.TxOuts.Select(s => s.Address).ToList(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
         }
 
-        public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromId(int id)
+        public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromId(long id)
         {
             var transactionDetails = await _cardanoContext.Txes.Where(s => s.Id == id)
                                 .Include(s => s.Block)

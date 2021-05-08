@@ -13,15 +13,47 @@
         <ul class="lisg-group list-group-flush">
             <li class="list-group-item">
                 <div class="form-group">
-                    <h5>Enter Transaction ID here </h5>
+                    <h5>Enter Transaction ID or Hash here </h5>
                     <EditForm Model="data" OnValidSubmit="GetTransactionData">
-                        <InputNumber @bind-Value="data.UserEnteredEpoch" />
+                        <InputNumber @bind-Value="data.TransactionHash" />
                         <button type="submit">Enter Transaction ID</button>
                     </EditForm>
                 </div>
             </li>
-            <li class="list-group-item"><h5>Epoch @data.UserEnteredEpoch</h5></li>
-            <li class="list-group-item"><h5>Transactions @data.TransactionsInEpoch</h5></li>
+            @if (transactionDataViewModel is null)
+            {
+                <li class="list-group-item"><h5> No Data To Display</h5></li>
+            }
+            else
+            {
+                <li class="list-group-item"><h5>Hash @transactionDataViewModel.Hash</h5></li>
+                <li class="list-group-item"><h5>Epoch No @transactionDataViewModel.EpochNo</h5></li>
+                <li class="list-group-item"><h5>Slot No @transactionDataViewModel.SlotNo</h5></li>
+                <li class="list-group-item"><h5>Out Sum @transactionDataViewModel.OutSum</h5></li>
+                <li class="list-group-item"><h5>Fee @transactionDataViewModel.Fee</h5></li>
+                <li class="list-group-item"><h5>Time @transactionDataViewModel.Time</h5></li>
+                @if (transactionDataViewModel.MetaData is null)
+                {
+                    <li class="list-group-item"><p>No metadata to display</p></li>
+                }
+                else
+                {
+                    <li class="list-group-item"><h5>Metadata @transactionDataViewModel.MetaData</h5></li>
+                }
+
+                for (int i = 0; i < transactionDataViewModel.TxInAddress.Count(); i += 1)
+                {
+                    <li class="list-group-item"><h5>In Address @i @transactionDataViewModel.TxInAddress[^i]</h5></li>
+                }
+
+                <li class="list-group-item"><p>To Address</p></li>
+
+                for (int i = 0; i < transactionDataViewModel.TxInAddress.Count(); i += 1)
+                {
+                    <li class="list-group-item"><h5>Out Address @i @transactionDataViewModel.TxOutAddress[^i]</h5></li>
+                }
+            }
+
         </ul>
 
     </div>
@@ -32,24 +64,44 @@
 </div>
 @code {
 
-    private class TransactionDataViewModel
+    private GetTransactionInformation.GetTransactionDataResponse transactionDataViewModel = null;
+
+    private class UserInputModel
     {
-        public int TransactionsInEpoch { get; set; }
-        public int UserEnteredEpoch { get; set; }
+        public long TransactionId { get; set; }
+        public string TransactionHash { get; set; }
         public string ElapsedTime { get; set; }
 
     }
 
-    private TransactionDataViewModel data = new();
+    private UserInputModel data = new();
 
 
     private async Task GetTransactionData()
     {
         Stopwatch stopWatch = new Stopwatch();
-        stopWatch.Start();
+        long id;
+        bool conversionResult = Int64.TryParse(data.TransactionHash, out id);
+
+
+        if (conversionResult == true)
+        {
+            data.TransactionId = id;
+
+            stopWatch.Start();
+            transactionDataViewModel = await _mediator.Send(new GetTransactionInformation.GetTransactionDataFromIdCommand(id));
+        }
+
+        else
+        {
+            stopWatch.Start();
+            transactionDataViewModel = await _mediator.Send(new GetTransactionInformation.GetTransactionDataFromHashCommand(data.TransactionHash));
+        }
+
+
+
         string ElapsedTime;
-        int id = 340;
-        var transactionsInEpoch = await _mediator.Send(new GetTransactionInformation.GetTransactionDataFromIdCommand(id));
+
         TimeSpan result = stopWatch.Elapsed;
         ElapsedTime = String.Format("{0} seconds and {1} miliseconds", result.Seconds, result.Milliseconds);
         StateHasChanged();
