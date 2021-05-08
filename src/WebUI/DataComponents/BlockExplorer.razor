@@ -48,8 +48,8 @@
         Stopwatch stopWatch = new Stopwatch();
         stopWatch.Start();
         string ElapsedTime;
-        string id = "340";
-        var transactionsInEpoch = await _mediator.Send(new GetTransactionInformation.GetTransactionDataCommand(id));
+        int id = 340;
+        var transactionsInEpoch = await _mediator.Send(new GetTransactionInformation.GetTransactionDataFromIdCommand(id));
         TimeSpan result = stopWatch.Elapsed;
         ElapsedTime = String.Format("{0} seconds and {1} miliseconds", result.Seconds, result.Milliseconds);
         StateHasChanged();

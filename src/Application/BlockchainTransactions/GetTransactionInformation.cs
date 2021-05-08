@@ -31,9 +31,9 @@ namespace Application.BlockchainTransactions
             public async Task<GetTransactionDataResponse> Handle(GetTransactionDataFromIdCommand request, CancellationToken cancellationToken)
             {
 
-                var transactionDetails = await _context.GetTransactionDataDetailsFromId(request.id);
+                var transactionDetails = await _context.GetTransactionDataDetailsFromId(request.Id);
 
-                _logger.LogInformation("The user requested transaction {id } at {time} and {transaction} was returned", request.id, DateTime.UtcNow, transactionDetails);
+                _logger.LogInformation("The user requested transaction {id } at {time} and {transaction} was returned", request.Id, DateTime.UtcNow, transactionDetails);
 
                 return transactionDetails; 
             }
@@ -54,9 +54,9 @@ namespace Application.BlockchainTransactions
             public async Task<GetTransactionDataResponse> Handle(GetTransactionDataFromHashCommand request, CancellationToken cancellationToken)
             {
 
-                var transactionDetails = await _context.GetTransactionDataDetailsFromId(request.Identifier);
+                var transactionDetails = await _context.GetTransactionDataDetailsFromHash(request.Identifier);
 
-                _logger.LogInformation("The user requested transaction {id } at {time} and {transaction} was returned", request.id, DateTime.UtcNow, transactionDetails);
+                _logger.LogInformation("The user requested transaction {id } at {time} and {transaction} was returned", request.Identifier, DateTime.UtcNow, transactionDetails);
 
                 return transactionDetails;
             }

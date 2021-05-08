@@ -14,6 +14,7 @@ namespace Application.Common.Interfaces
 
         Task<GetCurrentEpochResponse> GetCurrentEpoch();
 
-        Task<GetTransactionDataResponse> GetTransactionDataDetailsFromHash(string id);
+        Task<GetTransactionDataResponse> GetTransactionDataDetailsFromHash(string hash);
+        Task<GetTransactionDataResponse> GetTransactionDataDetailsFromId(int id);
     }
 }

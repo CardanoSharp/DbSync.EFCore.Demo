@@ -10,6 +10,7 @@ using static Application.EpochData.GetCurrentEpoch;
 using static Application.BlockChainTransactions.TransactionsPerEpoch;
 using static Application.BlockchainTransactions.GetTransactionInformation;
 using Npgsql;
+using System.Text;
 
 namespace Infastructure.Persistence
 {
@@ -57,9 +58,24 @@ namespace Infastructure.Persistence
             return returnList;
         }
 
-        public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromHash(string id)
+        public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromHash(string hash)
         {
-            var transactionDetails = await _cardanoContext.Txes.Where(s => s.Id == Convert.ToInt32(id))
+            var transactionDetails = await _cardanoContext.Txes.Where(s => s.Hash == Encoding.ASCII.GetBytes(hash))
+                                .Include(s => s.Block)
+                                .Include(s => s.TxOuts)
+                                .Include(s => s.TxMetadata)
+                                .Include(s => s.TxInTxInNavigations)
+                                .ThenInclude(s => s.TxOut)
+                                .ThenInclude(s => s.TxOuts)
+                                .FirstOrDefaultAsync();
+
+            return new GetTransactionDataResponse(transactionDetails.Hash.ToString(), transactionDetails.Block.SlotNo.Value, transactionDetails.Block.EpochNo.Value,
+                                                  transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, null, transactionDetails.TxOuts.Select(s => s.Address).ToList(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
+        }
+
+        public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromId(int id)
+        {
+            var transactionDetails = await _cardanoContext.Txes.Where(s => s.Id == id)
                                 .Include(s => s.Block)
                                 .Include(s => s.TxOuts)
                                 .Include(s => s.TxMetadata)
