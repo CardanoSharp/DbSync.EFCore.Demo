@@ -60,6 +60,9 @@ namespace Infastructure.Persistence
 
         public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromHash(string hash)
         {
+            var base64EncodedBytes = System.Convert.FromBase64String(hash);
+            var stringData = System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+
             var transactionDetails = await _cardanoContext.Txes.Where(s => s.Hash == Encoding.ASCII.GetBytes(hash))
                                 .Include(s => s.Block)
                                 .Include(s => s.TxOuts)
@@ -69,7 +72,7 @@ namespace Infastructure.Persistence
                                 .ThenInclude(s => s.TxOuts)
                                 .FirstOrDefaultAsync();
 
-            return new GetTransactionDataResponse(transactionDetails.Hash.ToString(), transactionDetails.Block.SlotNo.Value, transactionDetails.Block.EpochNo.Value,
+            return new GetTransactionDataResponse(transactionDetails.Hash, transactionDetails.Block.SlotNo.Value, transactionDetails.Block.EpochNo.Value,
                                                   transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, null, transactionDetails.TxOuts.Select(s => s.Address).ToList(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
         }
 
@@ -84,8 +87,10 @@ namespace Infastructure.Persistence
                                 .ThenInclude(s => s.TxOuts)
                                 .FirstOrDefaultAsync();
 
-            return new GetTransactionDataResponse(transactionDetails.Hash.ToString(), transactionDetails.Block.SlotNo.Value, transactionDetails.Block.EpochNo.Value,
-                                                  transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, null, transactionDetails.TxOuts.Select(s => s.Address).ToList(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
+
+
+            return new GetTransactionDataResponse(transactionDetails.Hash, transactionDetails.Block.SlotNo, transactionDetails.Block.EpochNo,
+                                                  transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, new List<string>(), transactionDetails.TxOuts.Select(s => s.Address).ToList(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
         }
 
     }
