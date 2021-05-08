@@ -98,13 +98,10 @@
             transactionDataViewModel = await _mediator.Send(new GetTransactionInformation.GetTransactionDataFromHashCommand(data.TransactionHash));
         }
 
-
-
-        string ElapsedTime;
-
         TimeSpan result = stopWatch.Elapsed;
-        ElapsedTime = String.Format("{0} seconds and {1} miliseconds", result.Seconds, result.Milliseconds);
+        data.ElapsedTime = String.Format("{0} seconds and {1} miliseconds", result.Seconds, result.Milliseconds);
         StateHasChanged();
     }
+}
 
 }
