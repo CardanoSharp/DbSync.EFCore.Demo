@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using static Application.EpochData.GetCurrentEpoch;
 using static Application.BlockChainTransactions.TransactionsPerEpoch;
 using static Application.BlockchainTransactions.GetTransactionInformation;
+using Npgsql;
 
 namespace Infastructure.Persistence
 {
@@ -56,7 +57,7 @@ namespace Infastructure.Persistence
             return returnList;
         }
 
-        public async Task<GetTransactionDataResponse> GetTransactionDataDetails(string id)
+        public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromHash(string id)
         {
             var transactionDetails = await _cardanoContext.Txes.Where(s => s.Id == Convert.ToInt32(id))
                                 .Include(s => s.Block)
