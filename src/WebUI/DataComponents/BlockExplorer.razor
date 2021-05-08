@@ -41,17 +41,15 @@
                     <li class="list-group-item"><h5>Metadata @transactionDataViewModel.MetaData</h5></li>
                 }
 
-                for (int i = 1; i < transactionDataViewModel.TxInAddress.Count(); i += 1)
-                {
-                    <li class="list-group-item"><h5>In Address @i+1 @transactionDataViewModel.TxInAddress[i - 1]</h5></li>
-                }
+                <Virtualize Items="transactionDataViewModel.TxInAddress" Context="address">
+                    <li class="list-group-item"><h5>In Address @address</h5></li>
+                </Virtualize>
 
-                <li class="list-group-item"><p>To Address</p></li>
+                <Virtualize Items="transactionDataViewModel.TxOutAddress" Context="address">
+                    <li class="list-group-item"><h5>In Address @address</h5></li>
+                </Virtualize>
 
-                for (int i = 1; i < transactionDataViewModel.TxOutAddress.Count(); i += 1)
-                {
-                    <li class="list-group-item"><h5>Out Address @i @transactionDataViewModel.TxOutAddress[i - 1]</h5></li>
-                }
+
             }
 
         </ul>
