@@ -64,10 +64,10 @@ namespace Infastructure.Persistence
 
             //TODO encode the string value to match that of the postgres DB to make an accurate query to retrieve data based on hash
 
-            var test = _cardanoContext.Txes.FromSqlRaw($"select * from public.tx t where encode(hash, 'hex') =  '{hash}'",hash).FirstOrDefault(); 
+            var txRetrievedFromEncodedHash = _cardanoContext.Txes.FromSqlRaw($"select * from public.tx t where encode(hash, 'hex') =  '{hash}'",hash).FirstOrDefault(); 
 
 
-            var transactionDetails = await _cardanoContext.Txes.Where(s => s.Hash == test.Hash)
+            var transactionDetails = await _cardanoContext.Txes.Where(s => s.Hash == txRetrievedFromEncodedHash.Hash)
                                 .Include(s => s.Block)
                                 .Include(s => s.TxOuts)
                                 .Include(s => s.TxMetadata)

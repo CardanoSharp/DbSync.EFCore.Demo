@@ -41,13 +41,26 @@
                     <li class="list-group-item"><h5>Metadata @transactionDataViewModel.MetaData</h5></li>
                 }
 
-                <Virtualize Items="transactionDataViewModel.TxInAddress" Context="address">
-                    <li class="list-group-item"><h5>In Address @address</h5></li>
-                </Virtualize>
-
-                <Virtualize Items="transactionDataViewModel.TxOutAddress" Context="address">
-                    <li class="list-group-item"><h5>In Address @address</h5></li>
-                </Virtualize>
+                if (transactionDataViewModel.TxInAddress is null)
+                {
+                    <li class="list-group-item"><p>No In Addresses to display</p></li>
+                }
+                else
+                {
+                    <Virtualize Items="transactionDataViewModel.TxInAddress" Context="address">
+                        <li class="list-group-item"><h5>In Address - @address</h5></li>
+                    </Virtualize>
+                }
+                if (transactionDataViewModel.TxOutAddress is null)
+                {
+                    <li class="list-group-item"><p>No Out Addresses to display</p></li>
+                }
+                else
+                {
+                    <Virtualize Items="transactionDataViewModel.TxOutAddress" Context="address">
+                        <li class="list-group-item"><h5>Out Address -@address</h5></li>
+                    </Virtualize>
+                }
 
 
             }
@@ -79,7 +92,7 @@
     {
         Stopwatch stopWatch = new Stopwatch();
         long id;
-        
+
         bool conversionResult = Int64.TryParse(data.TransactionHash, out id);
 
         if (conversionResult is true)
