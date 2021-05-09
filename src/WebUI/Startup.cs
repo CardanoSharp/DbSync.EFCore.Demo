@@ -6,6 +6,9 @@ using Microsoft.Extensions.Hosting;
 
 using Application;
 using Infastructure;
+using CardanoSharp.Wallet;
+using CardanoSharp.Wallet.Encoding;
+
 namespace WebUI
 {
     public class Startup
@@ -26,6 +29,9 @@ namespace WebUI
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
+            services.AddTransient<IKeyService, KeyService>();
+            services.AddTransient<IAddressService, AddressService>();
+            services.AddTransient<IBech32, Bech32>();
 
         }
 

@@ -1,7 +1,85 @@
 ﻿@page "/Wallet_Demo"
+@using Application.WalletKeys;
+@using System.Diagnostics;
+@inject MediatR.IMediator _mediator
 
 <h3>Wallet Demo</h3>
 
-@code {
+<div class="card">
+    <div class="card-header">
+        Mnemonic
+    </div>
 
+    <div class="card-body">
+        <button @onclick="GenerateMnemonic">Generate New Mnemonic</button>
+        <p>@phraseModel.Mnemonic</p>
+    </div>
+
+    <div class="card-header">
+        Keys and Address
+    </div>
+
+    <div class="card-body">
+        <div class="form-group">
+            <EditForm Model="keyModel" OnValidSubmit="RestoreWalletFromMnemonic">
+                <InputText @bind-Value="keyModel.Mnemonic" />
+                <button type="submit">Restore Wallet</button>
+            </EditForm>
+        </div>
+
+        <ul class="lisg-group list-group-flush">
+            <li class="list-group-item"><h5>Entropy @keyModel.Entropy</h5></li>
+            <li class="list-group-item"><h5>Root Key @keyModel.RootKey</h5></li>
+            <li class="list-group-item"><h5>Public Key @keyModel.PublicKey</h5></li>
+            <li class="list-group-item"><h5>Stake Key @keyModel.StakeKey</h5></li>
+            <li class="list-group-item"><h5>Payment Address @keyModel.BaseAddress</h5></li>
+        </ul>
+    </div>
+    <div class="card-footer">
+        <h5>Elapsed time to get results: @keyModel.ElapsedTime</h5>
+    </div>
+</div>
+
+@code {
+    private class MnemonicViewModel
+    {
+        public string Mnemonic { get; set; }
+    }
+
+    private MnemonicViewModel phraseModel = new();
+
+    private class KeyViewModel
+    {
+        public string Mnemonic { get; set; }
+        public string Entropy { get; set; }
+        public string RootKey { get; set; }
+        public string PublicKey { get; set; }
+        public string StakeKey { get; set; }
+        public string BaseAddress { get; set; }
+        public string ElapsedTime { get; set; }
+    }
+
+    private KeyViewModel keyModel = new();
+
+    private async Task GenerateMnemonic()
+    {
+        var response = await _mediator.Send(new GetMnemonic.GetMnemonicDataCommand(24));
+        phraseModel.Mnemonic = response.Mnemonic;
+        StateHasChanged();
+    }
+
+    private async Task RestoreWalletFromMnemonic()
+    {
+        Stopwatch stopWatch = new Stopwatch();
+        stopWatch.Start();
+        var response = await _mediator.Send(new RestoreWallet.RestoreWalletDataCommand(keyModel.Mnemonic));
+        keyModel.Entropy = response.Entropy;
+        keyModel.RootKey = response.RootKey;
+        keyModel.PublicKey = response.PublicKey;
+        keyModel.StakeKey = response.StakeKey;
+        keyModel.BaseAddress = response.Address;
+        TimeSpan result = stopWatch.Elapsed;
+        keyModel.ElapsedTime = String.Format("{0} seconds and {1} miliseconds", result.Seconds, result.Milliseconds);
+        StateHasChanged();
+    }
 }
