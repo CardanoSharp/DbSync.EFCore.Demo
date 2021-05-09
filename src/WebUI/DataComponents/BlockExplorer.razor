@@ -48,7 +48,7 @@
                 else
                 {
                     <Virtualize Items="transactionDataViewModel.TxInAddress" Context="address">
-                        <li class="list-group-item"><h5>In Address - @address</h5></li>
+                        <li class="list-group-item"><h5>In Address @address</h5></li>
                     </Virtualize>
                 }
                 if (transactionDataViewModel.TxOutAddress is null)
@@ -58,7 +58,7 @@
                 else
                 {
                     <Virtualize Items="transactionDataViewModel.TxOutAddress" Context="address">
-                        <li class="list-group-item"><h5>Out Address -@address</h5></li>
+                        <li class="list-group-item"><h5>Out Address @address</h5></li>
                     </Virtualize>
                 }
 
