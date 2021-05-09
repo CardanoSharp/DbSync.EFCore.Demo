@@ -79,10 +79,10 @@
     {
         Stopwatch stopWatch = new Stopwatch();
         long id;
+        
         bool conversionResult = Int64.TryParse(data.TransactionHash, out id);
 
-
-        if (conversionResult == true)
+        if (conversionResult is true)
         {
             data.TransactionId = id;
 

@@ -61,6 +61,6 @@ namespace Application.BlockchainTransactions
                 return transactionDetails;
             }
         }
-        public record GetTransactionDataResponse(byte[] Hash, int? SlotNo, int? EpochNo, DateTime Time, decimal Fee, decimal OutSum, List<string> TxInAddress, List<string> TxOutAddress, string MetaData);
+        public record GetTransactionDataResponse(string Hash, int? SlotNo, int? EpochNo, DateTime Time, decimal Fee, decimal OutSum, List<string> TxInAddress, List<string> TxOutAddress, string MetaData);
     }
 }

@@ -60,10 +60,14 @@ namespace Infastructure.Persistence
 
         public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromHash(string hash)
         {
-            var base64EncodedBytes = System.Convert.FromBase64String(hash);
-            var stringData = System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+            
 
-            var transactionDetails = await _cardanoContext.Txes.Where(s => s.Hash == Encoding.ASCII.GetBytes(hash))
+            //TODO encode the string value to match that of the postgres DB to make an accurate query to retrieve data based on hash
+
+            var test = _cardanoContext.Txes.FromSqlRaw($"select * from public.tx t where encode(hash, 'hex') =  '{hash}'",hash).FirstOrDefault(); 
+
+
+            var transactionDetails = await _cardanoContext.Txes.Where(s => s.Hash == test.Hash)
                                 .Include(s => s.Block)
                                 .Include(s => s.TxOuts)
                                 .Include(s => s.TxMetadata)
@@ -72,7 +76,7 @@ namespace Infastructure.Persistence
                                 .ThenInclude(s => s.TxOuts)
                                 .FirstOrDefaultAsync();
 
-            return new GetTransactionDataResponse(transactionDetails.Hash, transactionDetails.Block.SlotNo.Value, transactionDetails.Block.EpochNo.Value,
+            return new GetTransactionDataResponse(transactionDetails.Hash.ToString(), transactionDetails.Block.SlotNo.Value, transactionDetails.Block.EpochNo.Value,
                                                   transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, null, transactionDetails.TxOuts.Select(s => s.Address).ToList(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
         }
 
@@ -89,7 +93,7 @@ namespace Infastructure.Persistence
 
 
 
-            return new GetTransactionDataResponse(transactionDetails.Hash, transactionDetails.Block.SlotNo, transactionDetails.Block.EpochNo,
+            return new GetTransactionDataResponse(Encoding.UTF7.GetString(transactionDetails.Hash), transactionDetails.Block.SlotNo, transactionDetails.Block.EpochNo,
                                                   transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, new List<string>(), transactionDetails.TxOuts.Select(s => s.Address).ToList(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
         }
 
