@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using static Application.EpochData.GetCurrentEpoch;
 using static Application.BlockChainTransactions.TransactionsPerEpoch;
 using static Application.BlockchainTransactions.GetTransactionInformation;
+using Npgsql;
+using System.Text;
 
 namespace Infastructure.Persistence
 {
@@ -56,9 +58,16 @@ namespace Infastructure.Persistence
             return returnList;
         }
 
-        public async Task<GetTransactionDataResponse> GetTransactionDataDetails(string id)
+        public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromHash(string hash)
         {
-            var transactionDetails = await _cardanoContext.Txes.Where(s => s.Id == Convert.ToInt32(id))
+            
+
+            //TODO encode the string value to match that of the postgres DB to make an accurate query to retrieve data based on hash
+
+            var txRetrievedFromEncodedHash = _cardanoContext.Txes.FromSqlRaw($"select * from public.tx t where encode(hash, 'hex') =  '{hash}'",hash).FirstOrDefault(); 
+
+
+            var transactionDetails = await _cardanoContext.Txes.Where(s => s.Hash == txRetrievedFromEncodedHash.Hash)
                                 .Include(s => s.Block)
                                 .Include(s => s.TxOuts)
                                 .Include(s => s.TxMetadata)
@@ -69,6 +78,23 @@ namespace Infastructure.Persistence
 
             return new GetTransactionDataResponse(transactionDetails.Hash.ToString(), transactionDetails.Block.SlotNo.Value, transactionDetails.Block.EpochNo.Value,
                                                   transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, null, transactionDetails.TxOuts.Select(s => s.Address).ToList(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
+        }
+
+        public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromId(long id)
+        {
+            var transactionDetails = await _cardanoContext.Txes.Where(s => s.Id == id)
+                                .Include(s => s.Block)
+                                .Include(s => s.TxOuts)
+                                .Include(s => s.TxMetadata)
+                                .Include(s => s.TxInTxInNavigations)
+                                .ThenInclude(s => s.TxOut)
+                                .ThenInclude(s => s.TxOuts)
+                                .FirstOrDefaultAsync();
+
+
+
+            return new GetTransactionDataResponse(Encoding.UTF7.GetString(transactionDetails.Hash), transactionDetails.Block.SlotNo, transactionDetails.Block.EpochNo,
+                                                  transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, new List<string>(), transactionDetails.TxOuts.Select(s => s.Address).ToList(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
         }
 
     }

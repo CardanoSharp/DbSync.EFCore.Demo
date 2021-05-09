@@ -1,21 +1,118 @@
 ﻿@using System.Diagnostics;
 @using Application.BlockchainTransactions;
 @inject MediatR.IMediator _mediator
-<h3>BlockExplorer</h3>
 
+
+<div class="card">
+
+    <div class="card-header">
+        <h5>Block Explorer</h5>
+    </div>
+
+    <div class="card-body">
+        <ul class="lisg-group list-group-flush">
+            <li class="list-group-item">
+                <div class="form-group">
+                    <h5>Enter Transaction ID or Hash here </h5>
+                    <EditForm Model="data" OnValidSubmit="GetTransactionData">
+                        <InputText @bind-Value="data.TransactionHash" />
+                        <button type="submit">Enter Transaction ID</button>
+                    </EditForm>
+                </div>
+            </li>
+            @if (transactionDataViewModel is null)
+            {
+                <li class="list-group-item"><h5> No Data To Display</h5></li>
+            }
+            else
+            {
+                <li class="list-group-item"><h5>Hash @transactionDataViewModel.Hash</h5></li>
+                <li class="list-group-item"><h5>Epoch No @transactionDataViewModel.EpochNo</h5></li>
+                <li class="list-group-item"><h5>Slot No @transactionDataViewModel.SlotNo</h5></li>
+                <li class="list-group-item"><h5>Out Sum @transactionDataViewModel.OutSum</h5></li>
+                <li class="list-group-item"><h5>Fee @transactionDataViewModel.Fee</h5></li>
+                <li class="list-group-item"><h5>Time @transactionDataViewModel.Time</h5></li>
+                @if (transactionDataViewModel.MetaData is null)
+                {
+                    <li class="list-group-item"><p>No metadata to display</p></li>
+                }
+                else
+                {
+                    <li class="list-group-item"><h5>Metadata @transactionDataViewModel.MetaData</h5></li>
+                }
+
+                if (transactionDataViewModel.TxInAddress is null)
+                {
+                    <li class="list-group-item"><p>No In Addresses to display</p></li>
+                }
+                else
+                {
+                    <Virtualize Items="transactionDataViewModel.TxInAddress" Context="address">
+                        <li class="list-group-item"><h5>In Address @address</h5></li>
+                    </Virtualize>
+                }
+                if (transactionDataViewModel.TxOutAddress is null)
+                {
+                    <li class="list-group-item"><p>No Out Addresses to display</p></li>
+                }
+                else
+                {
+                    <Virtualize Items="transactionDataViewModel.TxOutAddress" Context="address">
+                        <li class="list-group-item"><h5>Out Address @address</h5></li>
+                    </Virtualize>
+                }
+
+
+            }
+
+        </ul>
+
+    </div>
+
+    <div class="card-footer">
+        <h5>Elapsed time to get results: @data.ElapsedTime</h5>
+    </div>
+</div>
 @code {
 
+    private GetTransactionInformation.GetTransactionDataResponse transactionDataViewModel = null;
 
-    protected override async Task OnInitializedAsync()
+    private class UserInputModel
+    {
+        public long TransactionId { get; set; }
+        public string TransactionHash { get; set; }
+        public string ElapsedTime { get; set; }
+
+    }
+
+    private UserInputModel data = new();
+
+
+    private async Task GetTransactionData()
     {
         Stopwatch stopWatch = new Stopwatch();
-        stopWatch.Start();
-        string ElapsedTime;
-        string id = "340";
-        var transactionsInEpoch = await _mediator.Send(new GetTransactionInformation.GetTransactionDataCommand(id));
+        long id;
+
+        bool conversionResult = Int64.TryParse(data.TransactionHash, out id);
+
+        if (conversionResult is true)
+        {
+            data.TransactionId = id;
+
+            stopWatch.Start();
+            transactionDataViewModel = await _mediator.Send(new GetTransactionInformation.GetTransactionDataFromIdCommand(id));
+        }
+
+        else
+        {
+            stopWatch.Start();
+            transactionDataViewModel = await _mediator.Send(new GetTransactionInformation.GetTransactionDataFromHashCommand(data.TransactionHash));
+        }
+
         TimeSpan result = stopWatch.Elapsed;
-        ElapsedTime = String.Format("{0} seconds and {1} miliseconds", result.Seconds, result.Milliseconds);
+        data.ElapsedTime = String.Format("{0} seconds and {1} miliseconds", result.Seconds, result.Milliseconds);
         StateHasChanged();
     }
+}
 
 }
