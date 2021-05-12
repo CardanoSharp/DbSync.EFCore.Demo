@@ -94,7 +94,7 @@ namespace Infastructure.Persistence
 
 
             return new GetTransactionDataResponse(Encoding.UTF7.GetString(transactionDetails.Hash), transactionDetails.Block.SlotNo, transactionDetails.Block.EpochNo,
-                                                  transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, new List<string>(), transactionDetails.TxOuts.Select(s => s.Address).ToList(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
+                                                  transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, transactionDetails.TxInTxInNavigations.SelectMany(s => s.TxOut.TxOuts).Select(s => s.Address).ToList(), transactionDetails.TxOuts.Select(s => s.Address).ToList(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
         }
 
     }

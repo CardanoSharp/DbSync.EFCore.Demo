@@ -15,7 +15,7 @@ namespace Application.WalletKeys
 {
     public static class RestoreWallet
     {
-        public record RestoreWalletDataCommand(string mnemonic) : IRequest<RestoreWalletDataResponse>;
+        public record RestoreWalletDataCommand(string Mnemonic) : IRequest<RestoreWalletDataResponse>;
 
         public class RestoreWalletDataHandler : IRequestHandler<RestoreWalletDataCommand, RestoreWalletDataResponse>
         {
@@ -38,7 +38,7 @@ namespace Application.WalletKeys
 
             public async Task<RestoreWalletDataResponse> Handle(RestoreWalletDataCommand request, CancellationToken cancellationToken)
             {
-                var entropy = _keyService.Restore(request.mnemonic);
+                var entropy = _keyService.Restore(request.Mnemonic);
                 var master = _keyService.GetRootKey(entropy);
 
                 var rootKey = new byte[master.Item1.Length + master.Item2.Length];

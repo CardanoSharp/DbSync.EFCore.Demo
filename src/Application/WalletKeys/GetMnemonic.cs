@@ -1,11 +1,7 @@
-﻿using Application.Common.Interfaces;
-using CardanoSharp.Wallet;
+﻿using CardanoSharp.Wallet;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,7 +9,7 @@ namespace Application.WalletKeys
 {
     public static class GetMnemonic
     {
-        public record GetMnemonicDataCommand(int size) : IRequest<GetMnemonicDataResponse>;
+        public record GetMnemonicDataCommand(int Size) : IRequest<GetMnemonicDataResponse>;
 
         public class GetMnemonicDataHandler : IRequestHandler<GetMnemonicDataCommand, GetMnemonicDataResponse>
         {
@@ -30,10 +26,10 @@ namespace Application.WalletKeys
             public async Task<GetMnemonicDataResponse> Handle(GetMnemonicDataCommand request, CancellationToken cancellationToken)
             {
                 var preMnemonic = DateTime.UtcNow;
-                var mnemonic = _keyService.Generate(request.size);
+                var mnemonic = _keyService.Generate(request.Size);
                 var postMnemonic = DateTime.UtcNow;
 
-                _logger.LogInformation($"The user requested a mnemonic of size {request.size}. Generated in {(preMnemonic - postMnemonic).TotalSeconds}");
+                _logger.LogInformation($"The user requested a mnemonic of size {request.Size}. Generated in {(preMnemonic - postMnemonic).TotalSeconds}");
 
                 return new GetMnemonicDataResponse(mnemonic);
             }

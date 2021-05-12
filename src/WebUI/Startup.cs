@@ -6,8 +6,6 @@ using Microsoft.Extensions.Hosting;
 
 using Application;
 using Infastructure;
-using CardanoSharp.Wallet;
-using CardanoSharp.Wallet.Encoding;
 
 namespace WebUI
 {
@@ -28,11 +26,6 @@ namespace WebUI
             services.AddInfrastructure(Configuration);
             services.AddRazorPages();
             services.AddServerSideBlazor();
-
-            services.AddTransient<IKeyService, KeyService>();
-            services.AddTransient<IAddressService, AddressService>();
-            services.AddTransient<IBech32, Bech32>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
