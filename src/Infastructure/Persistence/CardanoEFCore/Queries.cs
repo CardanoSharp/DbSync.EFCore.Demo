@@ -36,6 +36,14 @@ namespace Infastructure.Persistence
  
         }
 
+        /// <summary>
+        /// This method returns a list of all transaction in an epoch. It Querys the blockchain to include
+        /// information provided in the Tx domain model from Cardano Sharp Ef Core.
+        /// </summary>
+        /// <param name="epoch"></param> The epoch number that is requested
+        /// <returns>
+        /// A List of TransactionInResponseModels found in the Application Layer
+        /// </returns> 
         public async Task<List<TransactionsInEpochResponse>> GetTransactionsForUserEnteredEpoch(int epoch)
 
         {
@@ -77,7 +85,11 @@ namespace Infastructure.Persistence
                                 .FirstOrDefaultAsync();
 
             return new GetTransactionDataResponse(transactionDetails.Hash.ToString(), transactionDetails.Block.SlotNo.Value, transactionDetails.Block.EpochNo.Value,
-                                                  transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, null, transactionDetails.TxOuts.Select(s => s.Address).ToList(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
+                                                  transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, 
+                                                  transactionDetails.TxInTxInNavigations.SelectMany(s => s.TxOut.TxOuts).Select(s => s.Address).ToList(),
+                                                  transactionDetails.TxInTxInNavigations.SelectMany(s => s.TxOut.StakeAddresses).SelectMany(s => s.TxOuts).Select(s => s.Address).ToList(),
+                                                  transactionDetails.TxOuts.Select(s => s.Address).ToList(), 
+                                                  transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
         }
 
         public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromId(long id)
@@ -93,8 +105,12 @@ namespace Infastructure.Persistence
 
 
 
-            return new GetTransactionDataResponse(Encoding.UTF7.GetString(transactionDetails.Hash), transactionDetails.Block.SlotNo, transactionDetails.Block.EpochNo,
-                                                  transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum, transactionDetails.TxInTxInNavigations.SelectMany(s => s.TxOut.TxOuts).Select(s => s.Address).ToList(), transactionDetails.TxOuts.Select(s => s.Address).ToList(), transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
+            return new GetTransactionDataResponse(transactionDetails.Hash.ToString(), transactionDetails.Block.SlotNo.Value, transactionDetails.Block.EpochNo.Value,
+                                       transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum,
+                                       transactionDetails.TxInTxInNavigations.SelectMany(s => s.TxOut.TxOuts).Select(s => s.Address).ToList(),
+                                       transactionDetails.TxInTxInNavigations.SelectMany(s => s.TxOut.StakeAddresses).SelectMany(s => s.TxOuts).Select(s => s.Address).ToList(),
+                                       transactionDetails.TxOuts.Select(s => s.Address).ToList(),
+                                       transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
         }
 
     }

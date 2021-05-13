@@ -51,6 +51,15 @@
                         <li class="list-group-item"><h5>In Address @address</h5></li>
                     </Virtualize>
                 }
+                if (transactionDataViewModel.StakeAddressIn is null)
+                {
+                }
+                else
+                {
+                    <Virtualize Items="transactionDataViewModel.StakeAddressIn" Context="address">
+                        <li class="list-group-item"><h5>Stake Address @address</h5></li>
+                    </Virtualize>
+                }
                 if (transactionDataViewModel.TxOutAddress is null)
                 {
                     <li class="list-group-item"><p>No Out Addresses to display</p></li>
