@@ -12,8 +12,8 @@ namespace Application.BlockChainTransactions
 {
     public static class TransactionsInCurrentEpoch
     {
-        public record TransactionsInCurrentEpochCommand() : IRequest<List<TransactionsInEpochResponse>>;
-        public class TransactionsInCurrentEpochHandler : IRequestHandler<TransactionsInCurrentEpochCommand, List<TransactionsInEpochResponse>>
+        public record TransactionsInCurrentEpochCommand() : IRequest<TransactionsInEpochResponse>;
+        public class TransactionsInCurrentEpochHandler : IRequestHandler<TransactionsInCurrentEpochCommand, TransactionsInEpochResponse>
         {
             private readonly IQueries _context;
             private readonly IMediator _mediator;
@@ -26,12 +26,12 @@ namespace Application.BlockChainTransactions
                 _logger = logger;
             }
 
-            public async Task<List<TransactionsInEpochResponse>> Handle(TransactionsInCurrentEpochCommand request, CancellationToken cancellationToken)
+            public async Task<TransactionsInEpochResponse> Handle(TransactionsInCurrentEpochCommand request, CancellationToken cancellationToken)
             {
                 var currentEpoch = await _mediator.Send(new GetCurrentEpochCommand(), cancellationToken);
                 var transactions =  await _context.GetTransactionsForUserEnteredEpoch(currentEpoch.CurrentEpoch);
                 _logger.LogInformation("The system returned a current Epoch of {CurrentEpoch} and transaction in that Epoch are {transactions} all done at {Time}", currentEpoch, transactions, DateTime.UtcNow);
-                return transactions; 
+                return new TransactionsInEpochResponse(transactions); 
                 
             }
         }

@@ -10,7 +10,7 @@ namespace Application.Common.Interfaces
     {
         int GetBlockInformation(int slotNumber);
 
-        Task<List<TransactionsInEpochResponse>> GetTransactionsForUserEnteredEpoch(int epoch);
+        Task<long> GetTransactionsForUserEnteredEpoch(int epoch);
 
         Task<GetCurrentEpochResponse> GetCurrentEpoch();
 
