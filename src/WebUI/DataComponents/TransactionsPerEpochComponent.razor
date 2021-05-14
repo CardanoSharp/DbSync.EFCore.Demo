@@ -2,38 +2,40 @@
 @using Application.EpochData;
 @using System.Diagnostics;
 @inject MediatR.IMediator _mediator
-    <div class="card">
-        <div class="card-header">
-            <div class="display-4">
-                <p>Transactions Per Epoch</p>
-            </div>
+<div class="card">
 
-        </div>
+    <div class="card-header">
+        <h5>Transactions Per Epoch</h5>
+    </div>
 
-        <div class="card-body">
-            <p> Transactions for Epoch: @data.UserEnteredEpoch -> @data.TransactionsInEpoch</p> <p>Or enter your own Epoch:  </p>
-            <form class="form-inline">
+    <div class="card-body">
+        <ul class="lisg-group list-group-flush">
+            <li class="list-group-item"><h5>Epoch @data.UserEnteredEpoch</h5></li>
+            <li class="list-group-item"><h5>Transactions @data.TransactionsInEpoch</h5></li>
+            <li class="list-group-item">
                 <div class="form-group">
+                    <h5>Or enter your own Epoch: </h5>
                     <EditForm Model="data" OnValidSubmit="TransactionsInUserEnteredEpoch">
                         <InputNumber @bind-Value="data.UserEnteredEpoch" />
                         <button type="submit">Get Transactions In Epoch</button>
                     </EditForm>
 
                 </div>
-            </form>
+            </li>
+        </ul>
 
-        </div>
-
-        <div class="card-footer">
-            <p>Elapsed time to get results: @data.ElapsedTime</p>
-        </div>
     </div>
+
+    <div class="card-footer">
+        <h5>Elapsed time to get results: @data.ElapsedTime</h5>
+    </div>
+</div>
 
 @code {
 
     private class TransactionsPerEpochComponentViewModel
     {
-        public int TransactionsInEpoch { get; set; }
+        public long TransactionsInEpoch { get; set; }
         public int UserEnteredEpoch { get; set; }
         public string ElapsedTime { get; set; }
 
@@ -47,7 +49,7 @@
         Stopwatch stopWatch = new Stopwatch();
         stopWatch.Start();
         var transactionsInEpoch = await _mediator.Send(new TransactionsInCurrentEpoch.TransactionsInCurrentEpochCommand());
-        data.TransactionsInEpoch = transactionsInEpoch.Count();
+        data.TransactionsInEpoch = transactionsInEpoch.Transactions;
         Task<GetCurrentEpoch.GetCurrentEpochResponse> currentEpoch = _mediator.Send(new GetCurrentEpoch.GetCurrentEpochCommand());
         await currentEpoch.ContinueWith(
             s =>
@@ -64,7 +66,7 @@
         Stopwatch stopWatch = new Stopwatch();
         stopWatch.Start();
         var transactionsInEpoch = await _mediator.Send(new TransactionsPerEpoch.UserEnteredEochCommand(data.UserEnteredEpoch));
-        data.TransactionsInEpoch = transactionsInEpoch.Count();
+        data.TransactionsInEpoch = transactionsInEpoch.Transactions;
         TimeSpan result = stopWatch.Elapsed;
         data.ElapsedTime = String.Format("{0} seconds and {1} miliseconds", result.Seconds, result.Milliseconds);
         StateHasChanged();

@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\cardanosharp-dbsync-efcore\CardanoSharp.DbSync.EFCore.csproj" />
-    <ProjectReference Include="..\..\cardanosharp-dbsync-efcore-main\cardanosharp-dbsync-efcore-main\CardanoSharp.DbSync.EFCore.csproj" />
     <ProjectReference Include="..\Application\Application.csproj" />
   </ItemGroup>
 

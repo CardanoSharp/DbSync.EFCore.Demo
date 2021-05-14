@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 
 using Application;
 using Infastructure;
+
 namespace WebUI
 {
     public class Startup
@@ -25,8 +26,6 @@ namespace WebUI
             services.AddInfrastructure(Configuration);
             services.AddRazorPages();
             services.AddServerSideBlazor();
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

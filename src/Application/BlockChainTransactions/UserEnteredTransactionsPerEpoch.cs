@@ -13,8 +13,11 @@ namespace Application.BlockChainTransactions
 {
     public static class TransactionsPerEpoch
     {
-        public record UserEnteredEochCommand(int Epoch) : IRequest<List<TransactionsInEpochResponse>>;
-        public class UserEnteredTransactionsInEpochHandler : IRequestHandler<UserEnteredEochCommand, List<TransactionsInEpochResponse>>
+        /// <summary>
+        /// The command to get the number of transactions in an epoch that is entered by user
+        /// </summary>
+        public record UserEnteredEochCommand(int Epoch) : IRequest<TransactionsInEpochResponse>;
+        public class UserEnteredTransactionsInEpochHandler : IRequestHandler<UserEnteredEochCommand, TransactionsInEpochResponse>
         {
             private readonly IQueries _context;
             private readonly ILogger<TransactionsInEpochResponse> _logger;
@@ -25,15 +28,18 @@ namespace Application.BlockChainTransactions
                 _logger = logger;
             }
 
-            public async Task<List<TransactionsInEpochResponse>> Handle(UserEnteredEochCommand request, CancellationToken cancellationToken)
+            public async Task<TransactionsInEpochResponse> Handle(UserEnteredEochCommand request, CancellationToken cancellationToken)
             {
                 var transactions = await _context.GetTransactionsForUserEnteredEpoch(request.Epoch);
                 _logger.LogInformation("The user asked for the transactions in Epoch {request} and the system returned {transactions} transactions at {time}", request.Epoch, transactions, DateTime.UtcNow);
-                return transactions;
+                return new TransactionsInEpochResponse(transactions);
 
             }
         }
 
-        public record TransactionsInEpochResponse(long Id, int Size, byte[] Hash, decimal Fee);
+        /// <summary>
+        /// Response that returns the number of transactions in the entered epoch.
+        /// </summary>
+        public record TransactionsInEpochResponse(long Transactions);
     }
 }
