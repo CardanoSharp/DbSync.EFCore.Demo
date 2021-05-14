@@ -13,6 +13,9 @@ namespace Application.BlockChainTransactions
 {
     public static class TransactionsPerEpoch
     {
+        /// <summary>
+        /// The command to get the number of transactions in an epoch that is entered by user
+        /// </summary>
         public record UserEnteredEochCommand(int Epoch) : IRequest<TransactionsInEpochResponse>;
         public class UserEnteredTransactionsInEpochHandler : IRequestHandler<UserEnteredEochCommand, TransactionsInEpochResponse>
         {
@@ -34,6 +37,9 @@ namespace Application.BlockChainTransactions
             }
         }
 
+        /// <summary>
+        /// Response that returns the number of transactions in the entered epoch.
+        /// </summary>
         public record TransactionsInEpochResponse(long Transactions);
     }
 }

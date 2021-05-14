@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Application.EpochData
 {
+    /// <summary>
+    /// Simple static class that returns the current epoch.
+    /// </summary>
     public static class GetCurrentEpoch
     {
         public record GetCurrentEpochCommand() : IRequest<GetCurrentEpochResponse>;

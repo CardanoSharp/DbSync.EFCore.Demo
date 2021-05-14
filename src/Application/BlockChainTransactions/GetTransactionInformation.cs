@@ -3,8 +3,6 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,10 +10,19 @@ namespace Application.BlockchainTransactions
 {
     public static class GetTransactionInformation
     {
+        /// <summary>
+        /// Command to query for transation data by hash
+        /// </summary>
         public record GetTransactionDataFromHashCommand(string Identifier) : IRequest<GetTransactionDataResponse>;
 
+        /// <summary>
+        /// Command to query for transation data by hash
+        /// </summary>
         public record GetTransactionDataFromIdCommand(long Id) : IRequest<GetTransactionDataResponse>;
 
+        /// <summary>
+        /// Passes in the transaction id to query the blockchain to get a specfic transaction and return transaction data found in the Transaction data response.
+        /// </summary>
         public class GetTransactionDataFromIdHandler : IRequestHandler<GetTransactionDataFromIdCommand, GetTransactionDataResponse>
         {
             private readonly IQueries _context;
@@ -39,6 +46,9 @@ namespace Application.BlockchainTransactions
             }
         }
 
+        /// <summary>
+        /// Passes in the transaction hash to query the blockchain to get a specfic transaction and return transaction data found in the Transaction data response.
+        /// </summary>
         public class GetTransactionDataFromHashHandler : IRequestHandler<GetTransactionDataFromHashCommand, GetTransactionDataResponse>
         {
             private readonly IQueries _context;
@@ -61,6 +71,11 @@ namespace Application.BlockchainTransactions
                 return transactionDetails;
             }
         }
+       
+        /// <summary>
+        /// The respone returned by the two handlers to display the transaction data. Includes the hash, slot number, what epoch the transactions occured, the time transaction occured, 
+        /// the fee of the transaction, the total output sum, and all associated addresses that were used in the transaction.
+        /// </summary>
         public record GetTransactionDataResponse(string Hash, int? SlotNo, int? EpochNo, DateTime Time, decimal Fee, decimal OutSum, List<string> TxInAddress, List<string> StakeAddressIn,  List<string> TxOutAddress, string MetaData);
     }
 }

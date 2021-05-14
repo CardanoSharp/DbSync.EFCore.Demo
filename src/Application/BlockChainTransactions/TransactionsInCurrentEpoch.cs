@@ -12,7 +12,17 @@ namespace Application.BlockChainTransactions
 {
     public static class TransactionsInCurrentEpoch
     {
+        /// <summary>
+        /// The request to get transactions in the current epoch. 
+        /// </summary>
         public record TransactionsInCurrentEpochCommand() : IRequest<TransactionsInEpochResponse>;
+        
+        /// <summary>
+        /// Queries the Cardano database for the current Epoch, and passes that in to the get transactions for current epoch.
+        /// </summary>
+        /// <param name="request"></param> A void command that triggers the even of querying current epoch.
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns> Reutnrs a long that represents the transactions in the current epoch. Its uses the same response object that the user entered transactions uses.
         public class TransactionsInCurrentEpochHandler : IRequestHandler<TransactionsInCurrentEpochCommand, TransactionsInEpochResponse>
         {
             private readonly IQueries _context;
@@ -26,12 +36,7 @@ namespace Application.BlockChainTransactions
                 _logger = logger;
             }
 
-            /// <summary>
-            /// Queries the Cardano database for the current Epoch, and passes that in to the get transactions for current epoch.
-            /// </summary>
-            /// <param name="request"></param> A void command that triggers the even of querying current epoch.
-            /// <param name="cancellationToken"></param>
-            /// <returns></returns> Reutnrs a long that represents the transactions in the current epoch.
+
             public async Task<TransactionsInEpochResponse> Handle(TransactionsInCurrentEpochCommand request, CancellationToken cancellationToken)
             {
                 var currentEpoch = await _mediator.Send(new GetCurrentEpochCommand(), cancellationToken);
