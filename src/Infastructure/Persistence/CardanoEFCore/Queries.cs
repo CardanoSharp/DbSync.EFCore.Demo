@@ -57,38 +57,40 @@ namespace Infastructure.Persistence
         }
 
 
-    
-    /// <summary>
-    /// Queries the hash of a transaction hash and returns Transaction in that Epoch
-    /// </summary>
-    /// <param name="hash"></param> The transactions hash the user enters to query for that transaction hash
-    /// <returns></returns> Returns a TransactionsDataResonse that includes the hash, block slot number, epoch transaction occured, time of transaction, fee of fransaaction
-    /// Total Out Sum, In adddress and stake address if applicable, Out address, and trarnsaction metadata 
-    public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromHash(string hash)
-    {
+
+        /// <summary>
+        /// Queries the hash of a transaction hash and returns Transaction in that Epoch
+        /// </summary>
+        /// <param name="hash"></param> The transactions hash the user enters to query for that transaction hash
+        /// <returns></returns> Returns a TransactionsDataResonse that includes the hash, block slot number, epoch transaction occured, time of transaction, fee of fransaaction
+        /// Total Out Sum, In adddress and stake address if applicable, Out address, and trarnsaction metadata 
+        public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromHash(string hash)
+        {
+
+            var txRetrievedFromEncodedHash = _cardanoContext.Txes.FromSqlRaw($"select * from public.tx t where encode(hash, 'hex') =  '{hash}'", hash).FirstOrDefault();
 
 
-        //TODO encode the string value to match that of the postgres DB to make an accurate query to retrieve data based on hash
+            var transactionDetails = await _cardanoContext.Txes.Where(s => s.Hash == txRetrievedFromEncodedHash.Hash)
+                                .Include(s => s.Block)
+                                .Include(s => s.TxOuts)
+                                .Include(s => s.TxMetadata)
+                                .Include(s => s.TxInTxInNavigations)
+                                .ThenInclude(s => s.TxOut)
+                                .ThenInclude(s => s.TxOuts)
+                                .FirstOrDefaultAsync();
 
-        var txRetrievedFromEncodedHash = _cardanoContext.Txes.FromSqlRaw($"select * from public.tx t where encode(hash, 'hex') =  '{hash}'", hash).FirstOrDefault();
 
-
-        var transactionDetails = await _cardanoContext.Txes.Where(s => s.Hash == txRetrievedFromEncodedHash.Hash)
-                            .Include(s => s.Block)
-                            .Include(s => s.TxOuts)
-                            .Include(s => s.TxMetadata)
-                            .Include(s => s.TxInTxInNavigations)
-                            .ThenInclude(s => s.TxOut)
-                            .ThenInclude(s => s.TxOuts)
-                            .FirstOrDefaultAsync();
-
-        return new GetTransactionDataResponse(transactionDetails.Hash.ToString(), transactionDetails.Block.SlotNo.Value, transactionDetails.Block.EpochNo.Value,
-                                              transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum,
-                                              transactionDetails.TxInTxInNavigations.SelectMany(s => s.TxOut.TxOuts).Select(s => s.Address).ToList(),
-                                              transactionDetails.TxInTxInNavigations.SelectMany(s => s.TxOut.StakeAddresses).SelectMany(s => s.TxOuts).Select(s => s.Address).ToList(),
-                                              transactionDetails.TxOuts.Select(s => s.Address).ToList(),
-                                              transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
-    }
+            // TODO Review Query
+            // So the below query. For TxIn, it works 50% of the time, and the other 50% of the time it shows an address not shown on the Cardano Testnet Explorer.
+            //Yet to determine if this is expected behavior or not, in the regards that maybe the Cardano Testnet Explorer only chooses to show significant addresses.
+            //And for the stake addresses, sometimes the In address draws upon a stake address balance, but it is not shown in the below query. Everything else works as expected.
+            return new GetTransactionDataResponse(transactionDetails.Hash.ToString(), transactionDetails.Block.SlotNo.Value, transactionDetails.Block.EpochNo.Value,
+                                                  transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum,
+                                                  transactionDetails.TxInTxInNavigations.SelectMany(s => s.TxOut.TxOuts).Select(s => s.Address).ToList(),
+                                                  transactionDetails.TxInTxInNavigations.SelectMany(s => s.TxOut.StakeAddresses).SelectMany(s => s.TxOuts).Select(s => s.Address).ToList(),
+                                                  transactionDetails.TxOuts.Select(s => s.Address).ToList(),
+                                                  transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
+        }
 
         /// <summary>
         /// Queries the hash of a transaction ID and returns Transaction in that Epoch
@@ -97,25 +99,29 @@ namespace Infastructure.Persistence
         /// <returns></returns> Returns a TransactionsDataResonse that includes the hash, Block Slot Number, Epoch transaction occured, Time of transaction, Fee of Transaaction
         /// Total Out sum, In adddress and stake address if applicable, Out address, and trarnsaction Metadata 
         public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromId(long id)
-    {
-        var transactionDetails = await _cardanoContext.Txes.Where(s => s.Id == id)
-                            .Include(s => s.Block)
-                            .Include(s => s.TxOuts)
-                            .Include(s => s.TxMetadata)
-                            .Include(s => s.TxInTxInNavigations)
-                            .ThenInclude(s => s.TxOut)
-                            .ThenInclude(s => s.TxOuts)
-                            .FirstOrDefaultAsync();
+        {
+            var transactionDetails = await _cardanoContext.Txes.Where(s => s.Id == id)
+                                .Include(s => s.Block)
+                                .Include(s => s.TxOuts)
+                                .Include(s => s.TxMetadata)
+                                .Include(s => s.TxInTxInNavigations)
+                                .ThenInclude(s => s.TxOut)
+                                .ThenInclude(s => s.TxOuts)
+                                .FirstOrDefaultAsync();
 
 
 
-        return new GetTransactionDataResponse(transactionDetails.Hash.ToString(), transactionDetails.Block.SlotNo.Value, transactionDetails.Block.EpochNo.Value,
+            // TODO Review Query
+            // So the below query. For TxIn, it works 50% of the time, and the other 50% of the time it shows an address not shown on the Cardano Testnet Explorer.
+            //Yet to determine if this is expected behavior or not, in the regards that maybe the Cardano Testnet Explorer only chooses to show significant addresses.
+            //And for the stake addresses, sometimes the In address draws upon a stake address balance, but it is not shown in the below query. Everything else works as expected.
+            return new GetTransactionDataResponse(transactionDetails.Hash.ToString(), transactionDetails.Block.SlotNo.Value, transactionDetails.Block.EpochNo.Value,
                                    transactionDetails.Block.Time, transactionDetails.Fee, transactionDetails.OutSum,
                                    transactionDetails.TxInTxInNavigations.SelectMany(s => s.TxOut.TxOuts).Select(s => s.Address).ToList(),
                                    transactionDetails.TxInTxInNavigations.SelectMany(s => s.TxOut.StakeAddresses).SelectMany(s => s.TxOuts).Select(s => s.Address).ToList(),
                                    transactionDetails.TxOuts.Select(s => s.Address).ToList(),
                                    transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
-    }
+        }
 
-}
+    }
 }
