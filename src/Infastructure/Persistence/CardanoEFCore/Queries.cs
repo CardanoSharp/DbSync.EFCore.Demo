@@ -22,11 +22,12 @@ namespace Infastructure.Persistence
         {
             _cardanoContext = cardanoContext;
         }
-        public int GetBlockInformation(int slotNumber)
-        {
-            return (int)_cardanoContext.Blocks.Where(s => s.EpochSlotNo == slotNumber).Select(s => s.BlockNo).FirstOrDefault();
-        }
 
+        /// <summary>
+        /// Gets the current epoch by searching the most current block epoch number and returning that epoch number 
+        /// in the form of a current epoch response record.
+        /// </summary>
+        /// <returns></returns>
         public async Task<GetCurrentEpochResponse> GetCurrentEpoch()
         {
             var currentEpoch = await _cardanoContext.Blocks
@@ -38,7 +39,7 @@ namespace Infastructure.Persistence
 
         /// <summary>
         /// This method returns a list of all transaction in an epoch. It Querys the blockchain to include
-        /// all blocks that contain a tx and returns the count. 
+        /// all blocks that contain a tx  that is not 0 and returns the count. 
         /// </summary>
         /// <param name="epoch"></param> The epoch number that is requested
         /// <returns>
@@ -57,7 +58,12 @@ namespace Infastructure.Persistence
 
 
     
-
+    /// <summary>
+    /// Queries the hash of a transaction hash and returns Transaction in that Epoch
+    /// </summary>
+    /// <param name="hash"></param> The transactions hash the user enters to query for that transaction hash
+    /// <returns></returns> Returns a TransactionsDataResonse that includes the hash, block slot number, epoch transaction occured, time of transaction, fee of fransaaction
+    /// Total Out Sum, In adddress and stake address if applicable, Out address, and trarnsaction metadata 
     public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromHash(string hash)
     {
 
@@ -84,7 +90,13 @@ namespace Infastructure.Persistence
                                               transactionDetails.TxMetadata.Select(s => s.Json).FirstOrDefault());
     }
 
-    public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromId(long id)
+        /// <summary>
+        /// Queries the hash of a transaction ID and returns Transaction in that Epoch
+        /// </summary>
+        /// <param name="hash"></param> The transactions id the user enters to query for that transaction id
+        /// <returns></returns> Returns a TransactionsDataResonse that includes the hash, Block Slot Number, Epoch transaction occured, Time of transaction, Fee of Transaaction
+        /// Total Out sum, In adddress and stake address if applicable, Out address, and trarnsaction Metadata 
+        public async Task<GetTransactionDataResponse> GetTransactionDataDetailsFromId(long id)
     {
         var transactionDetails = await _cardanoContext.Txes.Where(s => s.Id == id)
                             .Include(s => s.Block)
