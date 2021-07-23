@@ -10,14 +10,13 @@ namespace ApplicationIntegrationTests.Builders
 {
     public static class TransactionBuilder
     {
-        public static void GenerateTransactions(int numberOfTransactions, CardanoContext cardanoContext)
+        public static void GenerateTransactions(int numberOfTransactions, CardanoContext cardanoContext, Encoding encoding)
         {
-
             for (int i = 1; i <= numberOfTransactions; i++)
             {
                 var transaction = new Tx
                 {
-                    Hash = Encoding.ASCII.GetBytes(i.ToString()),
+                    Hash = encoding.GetBytes(i.ToString()),
                     Block = new Block
                     {
                         SlotNo = i + 1,
