@@ -1,14 +1,7 @@
 ﻿using CardanoSharp.DbSync.EntityFramework;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using CardanoSharp.DbSync.EntityFramework.Models;
-using Moq;
-using Npgsql;
 using System;
-using System.IO;
-using WebUI;
 using Xunit;
 using System.Threading.Tasks;
 using ApplicationIntegrationTests.Builders;
@@ -20,7 +13,6 @@ namespace ApplicationIntegrationTests
     public class DatabaseFixture : IDisposable
     {
         private readonly CardanoContext _cardanoContext;
-
 
         public DatabaseFixture()
         {
@@ -40,7 +32,6 @@ namespace ApplicationIntegrationTests
             //arrange
             BlockBuilder.GenerateBlocks(30, _cardanoContext);
 
-
             //act
             var firstBlock = await _cardanoContext.Blocks.FirstOrDefaultAsync();
 
@@ -54,13 +45,10 @@ namespace ApplicationIntegrationTests
         {
             BlockBuilder.GenerateBlocks(30, _cardanoContext);
 
-
             var currentEpoch = await _cardanoContext.Blocks
                         .MaxAsync(s => s.EpochNo);
 
-            Assert.Equal(30, currentEpoch.Value);
-            
- 
+            Assert.Equal(30, currentEpoch.Value); 
         }
         
         [Theory]
@@ -83,17 +71,23 @@ namespace ApplicationIntegrationTests
         [InlineData("10")]
         public async void GetTransactionDetailsTest(string iD)
         {
-            TransactionBuilder.GenerateTransactions(10, _cardanoContext);
+            var encoding = Encoding.ASCII;
 
+            TransactionBuilder.GenerateTransactions(10, _cardanoContext, encoding);
 
-            var transactionDetails = await _cardanoContext.Txes.Where(s => BitConverter.ToString(s.Hash).ToLower().Replace("-", "") == iD)
-                                            .Include(s => s.Block)
-                                            .Include(s => s.TxOuts)
-                                            .Include(s => s.TxMetadata)
-                                            .Include(s => s.TxInTxInNavigations)
-                                            .ThenInclude(s => s.TxOut)
-                                            .ThenInclude(s => s.TxOuts)
-                                            .FirstOrDefaultAsync();
+            var txHashes = _cardanoContext.Txes
+                .Where(t => t.Hash != null)
+                .Select(s => encoding.GetString(s.Hash).ToLower().Replace("-", "")).ToList();
+
+            var transactionDetails = await _cardanoContext.Txes
+                .Where(s => s.Hash != null)
+                .Include(s => s.Block)
+                .Include(s => s.TxOuts)
+                .Include(s => s.TxMetadata)
+                .Include(s => s.TxInTxInNavigations)
+                .ThenInclude(s => s.TxOut)
+                .ThenInclude(s => s.TxOuts)
+                .FirstOrDefaultAsync(s => encoding.GetString(s.Hash).ToLower().Replace("-", "") == iD);
 
             Assert.Equal(Encoding.ASCII.GetBytes(iD), transactionDetails.Hash);
             Assert.Equal(Int32.Parse(iD) + 1, transactionDetails.Block.SlotNo);
